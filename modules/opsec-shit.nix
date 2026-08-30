@@ -1,0 +1,31 @@
+ { pkgs, ... } : {
+   home.packages = with pkgs; [
+     android-tools
+     aircrack-ng
+     curl
+     dig
+     dirb
+     dnsmasq
+     enum4linux-ng
+     ffuf
+     gobuster
+     hashcat
+     hylafaxplus
+     john
+     kismet
+     masscan
+     metasploit
+     netcat
+     net-tools
+     nikto
+     nmap
+     perl
+     smbmap
+     socat
+     sqlmap
+     tcpdump
+     wget
+     whois
+     wireshark
+    ];
+  } 
