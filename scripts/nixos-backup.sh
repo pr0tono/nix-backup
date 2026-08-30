@@ -6,6 +6,7 @@ printf "What do you want to name the commit? "
 read com
 cd ~/nix-backup
 git init
+git remote add origin git@github.com:pr0tono/nix-backup.git
 git add .
 git commit -m "$com"
 cd ~/nix-backup || return
