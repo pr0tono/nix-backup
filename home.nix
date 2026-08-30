@@ -33,6 +33,7 @@
     ffmpeg
     fluffychat
     fzf
+    gh
     gimp
     git
     helium-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
