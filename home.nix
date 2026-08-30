@@ -38,15 +38,14 @@
     gimp
     git
     helium-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-    impala
     irssi
     itch
     jq
     kdePackages.kdenlive
     krita
     libnotify
+    libreoffice
     localsend
-    lrcsnc
     meow
     mpv
     ncdu
