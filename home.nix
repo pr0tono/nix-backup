@@ -63,7 +63,6 @@
     protonup-qt
     pulseaudio
     pysolfc
-    qbittorrent
     qemu
     spotdl
     system-config-printer
