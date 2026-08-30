@@ -27,6 +27,7 @@
     cbonsai
     chroma
     cliphist
+    deluge
     doomretro
     dunst
     feh
