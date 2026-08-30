@@ -27,6 +27,7 @@
       doom = "doomretro ~/.config/doom1.wad";
       tv = "bash /bin/iptv.sh";
       weather = "curl wttr.in";
+      backup = "sh /etc/nixos/scripts/nixos-backup.sh";
     };
 
     initContent = ''
