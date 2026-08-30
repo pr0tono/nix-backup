@@ -2,18 +2,15 @@
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3;
-
     config = {
       modifier = "Mod1";
-
       fonts = {
         names = [ "Maple Mono NF CN" ];
         size = 8.0;
       };
-
       keybindings = {
         "Mod1+Return" = "exec kitty";
-        "Mod1+Shift+0" = "exec zsh /etc/nixos/scripts/chooser.sh";
+        "Mod1+Shift+0" = "exec /etc/nixos/scripts/chooser.sh";
         "Mod1+w" = "exec helium";
         "Mod1+e" = "exec --no-startup-id kitty -e yazi";
         "Mod1+v" = "exec codium";
@@ -91,7 +88,6 @@
         outer = 1;
         smartGaps = true;
       };
-
       colors = {
         focused = {
           border = "#f5e0dc";
@@ -100,7 +96,6 @@
           indicator = "#f5e0dc";
           childBorder = "#f5e0dc";
         };
-
         focusedInactive = {
           border = "#6c7086";
           background = "#1e1e2e";
@@ -108,7 +103,6 @@
           indicator = "#f5e0dc";
           childBorder = "#6c7086";
         };
-
         unfocused = {
           border = "#6c7086";
           background = "#1e1e2e";
@@ -116,7 +110,6 @@
           indicator = "#f5e0dc";
           childBorder = "#6c7086";
         };
-
         urgent = {
           border = "#f9e2af";
           background = "#1e1e2e";
@@ -124,7 +117,6 @@
           indicator = "#6c7086";
           childBorder = "#f9e2af";
         };
-
         placeholder = {
           border = "#6c7086";
           background = "#1e1e2e";
@@ -132,10 +124,8 @@
           indicator = "#6c7086";
           childBorder = "#6c7086";
         };
-
         background = "#1e1e2e";
       };
-
       bars = [
         {
           statusCommand = "${pkgs.i3status}/bin/i3status";
@@ -177,7 +167,6 @@
           };
         }
       ];
-
       modes = {
         resize = {
           h = "resize shrink width 10 px or 10 ppt";
@@ -201,19 +190,16 @@
           command = "dex --autostart --environment i3";
           notification = false;
         }
-
         {
           command = 
           "feh --bg-scale /etc/nixos/config/i3/pine.jpg";
           notification = false;
         }
-
         {
           command =
             "udiskie --notify --automount";
           notification = false;
         }
-
       ];
     };
   };

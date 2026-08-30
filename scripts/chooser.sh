@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 notify() {
 notify-send "$1" "$2"
