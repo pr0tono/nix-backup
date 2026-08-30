@@ -249,27 +249,7 @@ notify "Monitor" "$choice"
 
 }
 
-power_menu() {
-choice=$(printf '%s\n' "Shutdown" "Reboot" "Logout" "Suspend" | dmenu_styled -p "Power:")
-
-case "$choice" in
-    "Shutdown")
-        systemctl poweroff
-        ;;
-    "Reboot")
-        systemctl reboot
-        ;;
-    "Logout")
-        pkill -KILL -u "$USER"
-        ;;
-    "Suspend")
-        systemctl suspend
-        ;;
-esac
-
-}
-
-main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "WiFi" "Bluetooth" "Power" | dmenu_styled -p "Choose:")
+main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "WiFi" "Bluetooth" | dmenu_styled -p "Choose:")
 
 case "$main_choice" in
 "YouTube")
@@ -292,8 +272,5 @@ wifi_menu
 ;;
 "Bluetooth")
 bluetooth_menu
-;;
-"Power")
-power_menu
 ;;
 esac
