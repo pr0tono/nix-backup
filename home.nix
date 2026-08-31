@@ -23,7 +23,6 @@
     alsa-lib
     asusctl
     calc
-    cava
     cbonsai
     chroma
     cliphist
