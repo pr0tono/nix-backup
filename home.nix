@@ -21,7 +21,6 @@
     home.sessionVariables.EDITOR = "vim";
     home.packages = with pkgs; [
     alsa-lib
-    asusctl
     calc
     cbonsai
     chroma

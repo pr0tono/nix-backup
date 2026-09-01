@@ -13,7 +13,6 @@
     loader.timeout = 2;
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "8250.nr_uarts=0" ];
-    kernelModules = [ "asus_nb_wmi" ];
     kernel.sysctl."vm.swappiness" = 10;
     loader.grub = {
      enable = true;
