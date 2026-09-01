@@ -59,8 +59,6 @@
       "3rdparty".Extensions."uBlock0@raymondhill.net".adminSettings = {
         userSettings = rec {
           uiTheme = "dark";
-          uiAccentCustom = true;
-          uiAccentCustom0 = "#dc8a78";
           cloudStorageEnabled = false;
         };
 
@@ -89,21 +87,21 @@
         "browser.ai.control.sidebarChatbot" = "blocked";
         "browser.ai.control.smartTabGroups" = "blocked";
         "browser.ai.control.translations" = "blocked";
-        "browser.ml.enable" = false;
         "browser.ml.chat.enabled" = false;
         "browser.ml.chat.menu" = false;
+        "browser.ml.enable" = false;
         "browser.ml.linkPreview.enabled" = false;
+        "browser.toolbars.bookmarks.visibility" = "never";
         "extensions.ml.enabled" = false;
-        "pdfjs.enableAltText" = false;
+        "font.name.monospace.x-western" = "Maple Mono NF CN";
         "font.name.sans-serif.x-western" = "Maple Mono NF CN";
         "font.name.serif.x-western" = "Maple Mono NF CN";
-        "font.name.monospace.x-western" = "Maple Mono NF CN";
-        "font.size.variable.x-western" = 12;
         "font.size.fixed.x-western" = 12;
+        "font.size.variable.x-western" = 12;
+        "layout.css.prefers-color-scheme.content-override" = 0;
+        "pdfjs.enableAltText" = false;
         "sidebar.revamp" = false;
         "sidebar.visibility" = "hide-sidebar";
-        "layout.css.prefers-color-scheme.content-override" = 0;
-        "browser.toolbars.bookmarks.visibility" = "never";
         "browser.uiCustomization.state" = builtins.toJSON {
         placements = {
           "nav-bar" = [
