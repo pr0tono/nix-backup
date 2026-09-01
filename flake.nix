@@ -6,10 +6,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helium-nix = {
-      url = "github:AlvaroParker/helium-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +28,6 @@
     self,
     nixpkgs,
     home-manager,
-    helium-nix,
     millennium,
     nixcord,
     spicetify-nix,
@@ -45,7 +40,6 @@
       specialArgs = {
         inherit 
           inputs
-          helium-nix 
           millennium 
           nixcord 
           spicetify-nix 
@@ -59,7 +53,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = { inherit inputs helium-nix nixcord millennium spicetify-nix catppuccin-nix; };
+          home-manager.extraSpecialArgs = { inherit inputs nixcord millennium spicetify-nix catppuccin-nix; };
           home-manager.users.protono = ./home.nix;
         }
       ];

@@ -1,4 +1,4 @@
-{ pkgs, helium-nix, nixcord, inputs, ... }:
+{ pkgs, nixcord, inputs, ... }:
 
 {
   imports = [
@@ -35,7 +35,6 @@
     gh
     gimp
     git
-    helium-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     irssi
     itch
     jq

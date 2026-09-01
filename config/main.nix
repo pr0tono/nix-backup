@@ -8,6 +8,7 @@
     ./spicetify.nix
     ./zsh.nix
     ./yazi.nix
+    ./firefox.nix
     ./i3/i3.nix
     ./i3/i3status.nix
     ./editors/vim.nix

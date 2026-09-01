@@ -11,7 +11,7 @@
       keybindings = {
         "Mod1+Return" = "exec kitty";
         "Mod1+Shift+0" = "exec /etc/nixos/scripts/chooser.sh";
-        "Mod1+w" = "exec helium";
+        "Mod1+w" = "exec firefox";
         "Mod1+e" = "exec --no-startup-id kitty -e yazi";
         "Mod1+v" = "exec codium";
         "Mod1+t" = "exec tor-browser";
