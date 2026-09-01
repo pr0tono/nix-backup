@@ -102,6 +102,8 @@
         "pdfjs.enableAltText" = false;
         "sidebar.revamp" = false;
         "sidebar.visibility" = "hide-sidebar";
+        "browser.startup.page" = 1;
+        "browser.startup.homepage" = "about:blank";
         "browser.uiCustomization.state" = builtins.toJSON {
         placements = {
           "nav-bar" = [
