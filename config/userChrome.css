@@ -1,0 +1,167 @@
+  :root {
+    --chrome-bg: #1a1a2e !important;
+    --chrome-fg: #e0e0e0 !important;
+    --chrome-border: #2a2a3e !important;
+    --chrome-accent: #4a90d9 !important;
+    --chrome-hover: #2a2a3e !important;
+    --chrome-active: #3a3a4e !important;
+    --chrome-tab-bg: #16162a !important;
+    --chrome-tab-active: #1a1a2e !important;
+    --chrome-urlbar-bg: #111122 !important;
+    --chrome-scrollbar: #3a3a4e !important;
+    --chrome-scrollbar-hover: #4a4a5e !important;
+  }
+
+  /* Main window */
+  #main-window {
+    --lwt-identity-background-color: var(--chrome-bg) !important;
+    --lwt-identity-color: var(--chrome-fg) !important;
+    --lwt-toolbarbackground: var(--chrome-bg) !important;
+    --lwt-tabbar: var(--chrome-bg) !important;
+    --lwt-accentcolor: var(--chrome-bg) !important;
+    background-color: var(--chrome-bg) !important;
+    color: var(--chrome-fg) !important;
+  }
+
+  /* Toolbar */
+  #navigator-toolbox,
+  #nav-bar,
+  #PersonalToolbar {
+    background-color: var(--chrome-bg) !important;
+    color: var(--chrome-fg) !important;
+    border-color: var(--chrome-border) !important;
+  }
+
+  /* Tabs */
+  #tabbrowser-tabs,
+  .tabbrowser-tab {
+    background-color: var(--chrome-tab-bg) !important;
+    color: var(--chrome-fg) !important;
+  }
+
+  .tabbrowser-tab[selected="true"] {
+    background-color: var(--chrome-tab-active) !important;
+  }
+
+  .tabbrowser-tab:hover {
+    background-color: var(--chrome-hover) !important;
+  }
+
+  .tab-background {
+    background-color: transparent !important;
+  }
+
+  .tab-label,
+  .tab-title-pair {
+    color: var(--chrome-fg) !important;
+  }
+
+  /* URL bar */
+  #urlbar,
+  #urlbar-input-container,
+  #searchbar {
+    background-color: var(--chrome-urlbar-bg) !important;
+    color: var(--chrome-fg) !important;
+    border-color: var(--chrome-border) !important;
+  }
+
+  #urlbar-input {
+    color: var(--chrome-fg) !important;
+  }
+
+  #urlbar-input::placeholder {
+    color: #888 !important;
+  }
+
+  /* Buttons */
+  .toolbarbutton-icon,
+  .toolbarbutton-badge-background,
+  .window-title {
+    color: var(--chrome-fg) !important;
+    fill: var(--chrome-fg) !important;
+  }
+
+  .toolbarbutton:hover,
+  .toolbarbutton-1:hover {
+    background-color: var(--chrome-hover) !important;
+  }
+
+  /* Sidebar */
+  #sidebar-box,
+  #sidebar-content {
+    background-color: var(--chrome-bg) !important;
+    color: var(--chrome-fg) !important;
+  }
+
+  .sidebar-panels {
+    background-color: var(--chrome-bg) !important;
+  }
+
+  /* Scrollbars */
+  * {
+    scrollbar-color: var(--chrome-scrollbar) var(--chrome-bg) !important;
+  }
+
+  scrollbar {
+    background-color: var(--chrome-bg) !important;
+  }
+
+  scrollbar-thumb {
+    background-color: var(--chrome-scrollbar) !important;
+  }
+
+  scrollbar-thumb:hover {
+    background-color: var(--chrome-scrollbar-hover) !important;
+  }
+
+  scrollbar-button {
+    display: none !important;
+  }
+
+  /* Popup menus */
+  menulist,
+  menulist > .menulist-button,
+  .menu-panel,
+  .menu-iconic-title,
+  .menubar-menu {
+    background-color: var(--chrome-bg) !important;
+    color: var(--chrome-fg) !important;
+    border-color: var(--chrome-border) !important;
+  }
+
+  menu,
+  menuitem {
+    color: var(--chrome-fg) !important;
+  }
+
+  menu:hover,
+  menuitem:hover {
+    background-color: var(--chrome-hover) !important;
+  }
+
+  /* Bookmarks / history panel */
+  .panel-header,
+  .search-header {
+    background-color: var(--chrome-bg) !important;
+  }
+
+  .panel-main,
+  .search-results {
+    background-color: var(--chrome-bg) !important;
+    color: var(--chrome-fg) !important;
+  }
+
+  /* New tab page */
+  .newtab-page {
+    background-color: var(--chrome-bg) !important;
+  }
+
+  /* Title bar (if not using CSD) */
+  #titlebar {
+    background-color: var(--chrome-bg) !important;
+  }
+
+  /* Fix: prevent white flash on startup */
+  html, body {
+    background-color: var(--chrome-bg) !important;
+  }

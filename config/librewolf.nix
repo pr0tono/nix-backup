@@ -37,8 +37,8 @@
             updates_disabled = true;
           };
 
-          "{7aa7c68a-141f-45c9-a1c6-6e7382debbe1}" = {
-            install_url = moz "catppuccin-mocha";
+          "{5b78178f-135d-4df2-821f-1f289be7f348}" = {
+            install_url = moz "catppuccin-mocha-rosewater-git";
             installation_mode = "force_installed";
           };
 
@@ -52,64 +52,9 @@
     profiles.default = {
       settings = {
         "browser.toolbars.bookmarks.visibility" = "never";
-        "font.name.monospace.x-western" = "Maple Mono NF CN";
-        "font.name.sans-serif.x-western" = "Maple Mono NF CN";
-        "font.name.serif.x-western" = "Maple Mono NF CN";
-        "font.size.fixed.x-western" = 12;
-        "font.size.variable.x-western" = 12;
         "pdfjs.enableAltText" = false;
         "sidebar.revamp" = false;
         "sidebar.visibility" = "hide-sidebar";
-        "browser.uiCustomization.state" = builtins.toJSON {
-          placements = {
-            "nav-bar" = [
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "urlbar-container"
-              "downloads-button"
-              "unified-extensions-button"
-            ];
-          };
-
-          dirtyAreaCache = [
-            "nav-bar"
-          ];
-
-          currentVersion = 20;
-          newElementCount = 3;
-        };
-      };
-
-      search = {
-        force = true;
-        default = "ddg";
-        privateDefault = "ddg";
-
-        engines = {
-          "Nix Packages" = {
-            urls = [
-              {
-                template = "https://search.nixos.org/packages";
-                params = [
-                  {
-                    name = "channel";
-                    value = "26.05";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-
-            icon =
-              "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-
-            definedAliases = [ "@np" ];
-          };
-        };
       };
     };
   };
