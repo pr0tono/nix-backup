@@ -32,11 +32,4 @@
       PATH = "$HOME/.local/bin:$PATH";
     };
   };
-  home.packages = with pkgs; [
-    starship
-  ];
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 }   

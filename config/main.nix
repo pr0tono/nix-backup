@@ -7,6 +7,7 @@
     ./nixcord.nix
     ./spicetify.nix
     ./zsh.nix
+    ./starship.nix
     ./yazi.nix
     ./librewolf.nix
     ./i3/i3.nix
