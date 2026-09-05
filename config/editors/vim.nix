@@ -12,13 +12,11 @@
     ignorecase = true; 
     number = true;
     smartcase = true;
-    undofile = true;
    };
    extraConfig = ''
     colorscheme catppuccin
     command! W execute 'w !doas tee % > /dev/null' <bar> edit!
     set background=dark
-    set history=500
     set mouse=a
     set nobackup
     set nocompatible
