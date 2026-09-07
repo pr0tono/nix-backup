@@ -17,7 +17,6 @@
        autoEnable = false;
        enable = true;
      };
-     
     home.sessionVariables.EDITOR = "vim";
     home.packages = with pkgs; [
     alsa-lib
@@ -69,7 +68,6 @@
     tor-browser
     unrar
     unzip
-    virt-manager
     virt-viewer
     whatsie
     winetricks

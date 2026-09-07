@@ -249,7 +249,7 @@ notify "Monitor" "$choice"
 
 }
 
-main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "WiFi" "Bluetooth" | dmenu_styled -p "Choose:")
+main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "Win11" "WiFi" "Bluetooth" | dmenu_styled -p "Choose:")
 
 case "$main_choice" in
 "YouTube")
@@ -266,6 +266,9 @@ sound_menu
 ;;
 "Monitor Preset")
 monitor_menu
+;;
+"Win11")
+virsh start win11 ; virt-viewer win11 & disown
 ;;
 "WiFi")
 wifi_menu
