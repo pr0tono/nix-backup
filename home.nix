@@ -42,6 +42,9 @@
     krita
     libnotify
     libreoffice
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.pl_PL
     localsend
     meow
     mpv
