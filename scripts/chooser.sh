@@ -67,7 +67,7 @@ youtube() {
 }
 
 wifi_menu() {
-choice=$(printf '%s\n' "Connect WiFi" "Disconnect WiFi" "ProtonVPN Connect" "ProtonVPN Disconnect" | dmenu_styled -p "WiFi/VPN:")
+choice=$(printf '%s\n' "Connect WiFi" "Disconnect WiFi" | dmenu_styled -p "WiFi/VPN:")
 
 case "$choice" in
     "Connect WiFi")
@@ -105,20 +105,7 @@ case "$choice" in
             notify "WiFi" "No active WiFi connection"
         fi
         ;;
-
-    "ProtonVPN Connect")
-        kitty --hold -e protonvpn connect
-        ;;
-
-    "ProtonVPN Disconnect")
-        if protonvpn disconnect; then
-            notify "ProtonVPN" "Disconnected"
-        else
-            notify "ProtonVPN" "Failed to disconnect"
-        fi
-        ;;
    esac
-
 }
 
 bluetooth_menu() {

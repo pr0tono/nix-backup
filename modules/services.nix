@@ -27,10 +27,6 @@
     mouse.accelProfile = "flat";
   };
 
- #mullvad-vpn = { might try to make ts work later
- #  enable = true;
- #  gui.enable = true;
- #};
 
   pipewire = {
     enable = true;

@@ -58,7 +58,6 @@
     pavucontrol
     picom
     prismlauncher
-    proton-vpn-cli
     protonup-qt
     pulseaudio
     pysolfc
