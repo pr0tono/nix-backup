@@ -8,10 +8,18 @@
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
+      Cookies = {
+        Allow = [
+          "https://github.com"
+          "https://accounts.google.com"
+          "https://youtube.com"
+          "https://proton.me"
+        ];
+      };
 
       Preferences = {
-        "cookiebanners.service.mode.privateBrowsing" = 2;
         "cookiebanners.service.mode" = 2;
+        "cookiebanners.service.mode.privateBrowsing" = 2;
         "privacy.donottrackheader.enabled" = true;
         "privacy.fingerprintingProtection" = true;
         "privacy.resistFingerprinting" = true;
