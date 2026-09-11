@@ -32,6 +32,11 @@
         "kernel"
         "uptime"
         {
+          type = "command";
+          key = "OS Age";
+          text = "echo $(( ( $(date +%s) - $(date -d '2026-08-01' +%s) ) / 86400 )) days";
+        }
+        {
           type = "memory";
           key = "Memory";
           format = "{used} / {total}";
