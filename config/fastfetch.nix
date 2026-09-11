@@ -30,7 +30,6 @@
         "os"
         "host"
         "kernel"
-        "uptime"
         {
           type = "command";
           key = "OS Age";
