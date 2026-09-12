@@ -16,6 +16,7 @@
         "Mod1+v" = "exec codium";
         "Mod1+t" = "exec tor-browser";
         "Mod1+Shift+q" = "kill";
+        "Mod1+slash" = "exec --no-startup-id kitty -e /etc/nixos/scripts/binds.sh";
         "Print" = "exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/ && notify-send Screenshot'";
         "Shift+Print" = "exec --no-startup-id scrot -e 'xclip clipboard -t image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/ && notify-send Screenshot'";
         "Mod1+space" = "exec i3-dmenu-desktop --dmenu=\"dmenu -i -b -fn 'Poppins:size=9' -nb '#1e1e2e' -nf '#cdd6f4' -sb '#f5e0dc' -sf '#1e1e2e'\"";
