@@ -11,16 +11,6 @@
       "85:class_g = 'Dunst'"
       ];
     };
-  systemd.user.services.mic-led = {
-    enable = true;
-    wantedBy = ["default.target"];
-    script = "/etc/nixos/scripts/mic-led.sh";
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = 5;
-      Type = "simple";
-    };
-  };
  services = {
    # ly kinda meh dm (but works!)  
   displayManager.ly = {
