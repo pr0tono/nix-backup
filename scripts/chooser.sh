@@ -67,7 +67,7 @@ youtube() {
 }
 
 wifi_menu() {
-choice=$(printf '%s\n' "Connect WiFi" "Disconnect WiFi" | dmenu_styled -p "WiFi/VPN:")
+choice=$(printf '%s\n' "Connect WiFi" "Disconnect WiFi" | dmenu_styled -p "WiFi:")
 
 case "$choice" in
     "Connect WiFi")
@@ -108,102 +108,92 @@ case "$choice" in
    esac
 }
 
+vms_chooser() {
+	vms=$(virsh list --all | sed '1,2d')
+	sel=$(echo "$vms" | dmenu_styled -p "Start: " -l 10 -i | awk '{print $2}')
+	virsh start "$sel" ; virt-viewer -w "$sel"
+}
+
 bluetooth_menu() {
-choice=$(printf '%s\n' "Connect Device" "Disconnect Device" | dmenu_styled -p "Bluetooth:")
+    local choice
+    choice=$(printf '%s\n' "Connect Device" "Disconnect Device" \
+        | dmenu_styled -p "Bluetooth:")
 
-case "$choice" in
-    "Connect Device")
-        bluetoothctl power on >/dev/null 2>&1
-        bluetoothctl scan on >/dev/null 2>&1 &
-        scan_pid=$!
+    case "$choice" in
+        "Connect Device")
+            bluetoothctl power on >/dev/null 2>&1
+            bluetoothctl scan on >/dev/null 2>&1 &
+            local scan_pid=$!
+            kill "$scan_pid" 2>/dev/null || true
+            wait "$scan_pid" 2>/dev/null
+            bluetoothctl scan off >/dev/null 2>&1
+            local offline=""
+            while IFS=$'\t' read -r mac name; do
+                [ -z "$mac" ] && continue
+                if ! bluetoothctl info "$mac" 2>/dev/null | grep -q 'Connected: yes'; then
+                    [ -z "$name" ] && name="$mac"
+                    offline+="${mac}\t${name}"$'\n'
+                fi
+            done < <(bluetoothctl devices | awk '{mac=$2; $1=$2=""; print mac "\t" $0}')
 
-        kill "$scan_pid" >/dev/null 2>&1 || true
-        bluetoothctl scan off >/dev/null 2>&1
+            [ -z "$offline" ] && { notify "Bluetooth" "No offline devices found"; return; }
 
-        devices=$(bluetoothctl devices)
+            local selected
+            selected=$(printf '%s\n' "$offline" | cut -f2- \
+                | dmenu_styled -p "Connect:" -l 10)
+            [ -z "$selected" ] && return
 
-        [ -z "$devices" ] && {
-            notify "Bluetooth" "No devices found"
-            return
-        }
+            local mac
+            mac=$(printf '%s\n' "$offline" | awk -F'\t' -v n="$selected" '$2==n {print $1; exit}')
+            [ -z "$mac" ] && { notify "Bluetooth" "Device not found"; return; }
 
-        selected=$(printf '%s\n' "$devices" | sed 's/^Device [^ ]* //' | dmenu_styled -p "Connect:" -l 10)
-        [ -z "$selected" ] && return
+            bluetoothctl trust "$mac"   >/dev/null 2>&1
+            bluetoothctl pair   "$mac"  >/dev/null 2>&1
+            bluetoothctl connect "$mac" >/dev/null 2>&1
 
-        mac=$(printf '%s\n' "$devices" | awk -v name="$selected" '$0 ~ "Device [^ ]* " name "$" {print $2; exit}')
-
-        [ -z "$mac" ] && {
-            notify "Bluetooth" "Device not found"
-            return
-        }
-
-        bluetoothctl trust "$mac" >/dev/null 2>&1
-        bluetoothctl pair "$mac" >/dev/null 2>&1
-        bluetoothctl connect "$mac" >/dev/null 2>&1
-
-        if bluetoothctl info "$mac" 2>/dev/null | grep -q "Connected: yes"; then
-            notify "Bluetooth" "Connected to $selected"
-        else
-            notify "Bluetooth" "Failed to connect to $selected"
-        fi
-        ;;
-
-    "Disconnect Device")
-        connected=""
-
-        while read -r mac; do
-            [ -z "$mac" ] && continue
-
-            if bluetoothctl info "$mac" 2>/dev/null | grep -q "Connected: yes"; then
-                name=$(bluetoothctl info "$mac" 2>/dev/null | sed -n 's/^[[:space:]]*Name: //p' | head -n 1)
-                [ -z "$name" ] && name="$mac"
-                connected="${connected}${mac} — ${name}"$'\n'
+            if bluetoothctl info "$mac" 2>/dev/null | grep -q 'Connected: yes'; then
+                notify "Bluetooth" "Connected to $selected"
+            else
+                notify "Bluetooth" "Failed to connect to $selected"
             fi
-        done < <(bluetoothctl devices | awk '{print $2}')
+            ;;
 
-        [ -z "$connected" ] && {
-            notify "Bluetooth" "No devices connected"
-            return
-        }
+        "Disconnect Device")
+            local connected=""
+            while IFS=$'\t' read -r mac name; do
+                [ -z "$mac" ] && continue
+                local info
+                info=$(bluetoothctl info "$mac" 2>/dev/null)
+                if printf '%s\n' "$info" | grep -q 'Connected: yes'; then
+                    [ -z "$name" ] && name="$mac"
+                    connected+="${mac} — ${name}"$'\n'
+                fi
+            done < <(bluetoothctl devices | awk '{mac=$2; $1=$2=""; print mac "\t" $0}')
 
-        selected=$(printf '%s' "$connected" | dmenu_styled -p "Disconnect:" -l 10)
-        [ -z "$selected" ] && return
+            [ -z "$connected" ] && { notify "Bluetooth" "No devices connected"; return; }
 
-        mac=$(printf '%s\n' "$selected" | awk '{print $1}')
+            local sel
+            sel=$(printf '%s' "$connected" | dmenu_styled -p "Disconnect:" -l 10)
+            [ -z "$sel" ] && return
 
-        if bluetoothctl disconnect "$mac" >/dev/null 2>&1; then
-            notify "Bluetooth" "Disconnected"
-        else
-            notify "Bluetooth" "Failed to disconnect"
-        fi
-        ;;
-esac
+            mac=${sel%% *}
 
+            if bluetoothctl disconnect "$mac" >/dev/null 2>&1; then
+                notify "Bluetooth" "Disconnected"
+            else
+                notify "Bluetooth" "Failed to disconnect"
+            fi
+            ;;
+    esac
 }
 
 sound_menu() {
-    sinks=$(pactl -f json list sinks)
-
-    selected=$(pactl list sinks | awk '
-        /^Sink #/ {
-            id=$2
-            sub("#", "", id)
-        }
-        /^[[:space:]]*Description:/ {
-            desc=$0
-            sub(/^[[:space:]]*Description: /, "", desc)
-            print id "\t" desc
-        }
-    ' | dmenu_styled -p "Output:" -l 10)
-
+    local selected
+    selected=$(pactl list sinks short | awk '{print $1"\t"$2}' | dmenu_styled -p "Output:" -l 10)
     [ -z "$selected" ] && return
-
-    sink_id=$(printf '%s\n' "$selected" | cut -f1)
-
-    pactl set-default-sink "$sink_id"
-
+    pactl set-default-sink "${selected%%	*}"
     notify "Sound" "Output changed"
-}
+}   
 
 monitor_menu() {
 choice=$(printf '%s\n' "Extend Right" "Extend Left" "Mirror" "HDMI Only" "Laptop Only" "Turn Off" | dmenu_styled -p "Monitor Preset:")
@@ -226,8 +216,6 @@ case "$choice" in
         ;;
     "Turn Off")
         xrandr --output HDMI-1 --off
-        ;;
-    *)
         return
         ;;
 esac
@@ -236,7 +224,7 @@ notify "Monitor" "$choice"
 
 }
 
-main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "Win11" "WiFi" "Bluetooth" | dmenu_styled -p "Choose:")
+main_choice=$(printf '%s\n' "YouTube" "Go to Arch" "Ollama" "Sound" "Monitor Preset" "Vms" "WiFi" "Bluetooth" | dmenu_styled -p "Choose:")
 
 case "$main_choice" in
 "YouTube")
@@ -254,8 +242,8 @@ sound_menu
 "Monitor Preset")
 monitor_menu
 ;;
-"Win11")
-virsh start win11 ; virt-viewer win11 & disown
+"Vms")
+vms_chooser
 ;;
 "WiFi")
 wifi_menu
