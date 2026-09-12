@@ -14,6 +14,7 @@
           "https://accounts.google.com"
           "https://youtube.com"
           "https://proton.me"
+          "https://anidb.app"
         ];
       };
 
