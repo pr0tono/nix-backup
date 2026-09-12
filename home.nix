@@ -4,7 +4,6 @@
   imports = [
     inputs.catppuccin-nix.homeModules.catppuccin
     nixcord.homeModules.nixcord
-    ./modules/mic-led.nix
     ./modules/lang.nix
     ./modules/opsec-shit.nix   
     ./modules/python.nix
