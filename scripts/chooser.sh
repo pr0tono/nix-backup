@@ -111,6 +111,7 @@ case "$choice" in
 vms_chooser() {
 	vms=$(virsh list --all | sed '1,2d')
 	sel=$(echo "$vms" | dmenu_styled -p "Start: " -l 10 -i | awk '{print $2}')
+	[ -z "$sel" ] ; exit 0
 	virsh start "$sel" ; virt-viewer -w "$sel"
 }
 
