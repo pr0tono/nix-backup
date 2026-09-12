@@ -189,10 +189,10 @@ bluetooth_menu() {
 }
 
 sound_menu() {
-    local selected
-    selected=$(pactl list sinks short | awk '{print $1"\t"$2}' | dmenu_styled -p "Output:" -l 10)
-    [ -z "$selected" ] && return
-    pactl set-default-sink "${selected%%	*}"
+    local sel
+    sel=$(pactl list sinks short | awk '{print $1"\t"$2}' | dmenu_styled -p "Output:" -l 10)
+    [ -z "$sel" ] && return
+    pactl set-default-sink "${sel%% *}"
     notify "Sound" "Output changed"
 }   
 
