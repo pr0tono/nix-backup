@@ -24,6 +24,7 @@
     cbonsai
     chroma
     cliphist
+    ddnet
     deluge
     doomretro
     dunst
@@ -34,6 +35,9 @@
     gh
     gimp
     git
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.pl_PL
     irssi
     itch
     jq
@@ -41,9 +45,6 @@
     krita
     libnotify
     libreoffice
-    hunspell
-    hunspellDicts.en_US
-    hunspellDicts.pl_PL
     localsend
     meow
     mpv
