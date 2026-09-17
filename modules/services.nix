@@ -58,11 +58,6 @@
    };
   };
 
-  xserver = {
-    enable = true;
-    xkb.layout = "us";
-    windowManager.i3.enable = true;
-  };
   #printers
   printing = {
    enable = true;
@@ -78,8 +73,6 @@
   openssh = {
     enable = true;
     settings = {
-    X11Forwarding = true;
-    X11UseLocalhost = true;
     };
   };
 
