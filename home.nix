@@ -70,6 +70,7 @@
     unzip
     virt-viewer
     waydroid
+    waydroid-helper
     whatsie
     winetricks
     wineWow64Packages.stable

@@ -5,10 +5,6 @@
     wrapperFeatures.gtk = true;
     config = {
       modifier = "Mod1";
-      fonts = {
-        names = [ "Maple Mono NF CN" ];
-        size = 8.0;
-      };
       input."type.pointer" = {
         accel_profile = "flat";
         pointer_accel = "0";
@@ -66,7 +62,7 @@
         "Mod1+Shift+r" = "reload";
 
         "Mod1+Shift+m" =
-          "exec \"i3-nagbar -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'i3-msg exit'\"";
+          "exec \"swaynag -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'i3-msg exit'\"";
 
         "Mod1+r" = "mode resize";
 
@@ -196,9 +192,6 @@
       };
 
       startup = [
-     #  {
-     #    command = "dex --autostart --environment i3";
-     #  }
         {
           command =
             "udiskie --notify --automount";
@@ -206,6 +199,9 @@
       ];
     };
   };
+  xdg.configFile."swaynag/config".text = ''
+   font=Maple Mono NF CN 8 
+  '';
     home.packages = with pkgs; [
     xss-lock
     udiskie
