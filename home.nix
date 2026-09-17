@@ -69,6 +69,7 @@
     unrar
     unzip
     virt-viewer
+    waydroid
     whatsie
     winetricks
     wineWow64Packages.stable
