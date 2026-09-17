@@ -116,72 +116,105 @@ vms_chooser() {
 
 bluetooth_menu() {
     local choice
-    choice=$(printf '%s\n' "Connect Device" "Disconnect Device" \
-        | dmenu_styled -p "Bluetooth:")
+    choice=$(
+        printf '%s\n' \
+            "Connect Device" \
+            "Disconnect Device" |
+        dmenu_styled -p "Bluetooth:"
+    )
 
     case "$choice" in
         "Connect Device")
-            bluetoothctl power on >/dev/null 2>&1
+            bluetoothctl power on >/dev/null 2>&1 || {
+                notify "Bluetooth" "Could not power on Bluetooth"
+                return 1
+            }
+            bluetoothctl agent on >/dev/null 2>&1
+            bluetoothctl default-agent >/dev/null 2>&1
             bluetoothctl scan on >/dev/null 2>&1 &
             local scan_pid=$!
-            kill "$scan_pid" 2>/dev/null || true
-            wait "$scan_pid" 2>/dev/null
+            sleep 5
             bluetoothctl scan off >/dev/null 2>&1
+            kill "$scan_pid" 2>/dev/null || true
+            wait "$scan_pid" 2>/dev/null || true
             local offline=""
-            while IFS=$'\t' read -r mac name; do
+            local line mac name info
+            while IFS= read -r line; do
+                [ -z "$line" ] && continue
+                mac=$(printf '%s\n' "$line" | awk '{print $2}')
+                name=$(printf '%s\n' "$line" | cut -d' ' -f3-)
                 [ -z "$mac" ] && continue
-                if ! bluetoothctl info "$mac" 2>/dev/null | grep -q 'Connected: yes'; then
+                info=$(bluetoothctl info "$mac" 2>/dev/null)
+
+                if ! printf '%s\n' "$info" |
+                    grep -q '^[[:space:]]*Connected: yes'
+                then
                     [ -z "$name" ] && name="$mac"
-                    offline+="${mac}\t${name}"$'\n'
+                    offline+="${mac} — ${name}"$'\n'
                 fi
-            done < <(bluetoothctl devices | awk '{mac=$2; $1=$2=""; print mac "\t" $0}')
-
-            [ -z "$offline" ] && { notify "Bluetooth" "No offline devices found"; return; }
-
+            done < <(bluetoothctl devices)
+            if [ -z "$offline" ]; then
+                notify "Bluetooth" "No offline devices found"
+                return 0
+            fi
             local selected
-            selected=$(printf '%s\n' "$offline" | cut -f2- \
-                | dmenu_styled -p "Connect:" -l 10)
-            [ -z "$selected" ] && return
+            selected=$(
+                printf '%s' "$offline" |
+                dmenu_styled -p "Connect:" -l 10
+            )
+            [ -z "$selected" ] && return 0
+            mac=${selected%% *}
+            if ! bluetoothctl info "$mac" >/dev/null 2>&1; then
+                notify "Bluetooth" "Device not found"
+                return 1
+            fi
+            bluetoothctl trust "$mac" >/dev/null 2>&1
+            bluetoothctl pair "$mac" >/dev/null 2>&1 || true
 
-            local mac
-            mac=$(printf '%s\n' "$offline" | awk -F'\t' -v n="$selected" '$2==n {print $1; exit}')
-            [ -z "$mac" ] && { notify "Bluetooth" "Device not found"; return; }
-
-            bluetoothctl trust "$mac"   >/dev/null 2>&1
-            bluetoothctl pair   "$mac"  >/dev/null 2>&1
-            bluetoothctl connect "$mac" >/dev/null 2>&1
-
-            if bluetoothctl info "$mac" 2>/dev/null | grep -q 'Connected: yes'; then
-                notify "Bluetooth" "Connected to $selected"
+            if bluetoothctl connect "$mac" >/dev/null 2>&1 &&
+               bluetoothctl info "$mac" 2>/dev/null |
+                   grep -q '^[[:space:]]*Connected: yes'
+            then
+                notify "Bluetooth" "Connected to ${selected#* — }"
             else
-                notify "Bluetooth" "Failed to connect to $selected"
+                notify "Bluetooth" "Failed to connect to ${selected#* — }"
+                return 1
             fi
             ;;
-
         "Disconnect Device")
             local connected=""
-            while IFS=$'\t' read -r mac name; do
+            local line mac name info
+            while IFS= read -r line; do
+                [ -z "$line" ] && continue
+                mac=$(printf '%s\n' "$line" | awk '{print $2}')
+                name=$(printf '%s\n' "$line" | cut -d' ' -f3-)
                 [ -z "$mac" ] && continue
-                local info
                 info=$(bluetoothctl info "$mac" 2>/dev/null)
-                if printf '%s\n' "$info" | grep -q 'Connected: yes'; then
+
+                if printf '%s\n' "$info" |
+                    grep -q '^[[:space:]]*Connected: yes'
+                then
                     [ -z "$name" ] && name="$mac"
                     connected+="${mac} — ${name}"$'\n'
                 fi
-            done < <(bluetoothctl devices | awk '{mac=$2; $1=$2=""; print mac "\t" $0}')
+            done < <(bluetoothctl devices)
+            if [ -z "$connected" ]; then
+                notify "Bluetooth" "No devices connected"
+                return 0
+            fi
+            local selected
+            selected=$(
+                printf '%s' "$connected" |
+                dmenu_styled -p "Disconnect:" -l 10
+            )
+            [ -z "$selected" ] && return 0
 
-            [ -z "$connected" ] && { notify "Bluetooth" "No devices connected"; return; }
-
-            local sel
-            sel=$(printf '%s' "$connected" | dmenu_styled -p "Disconnect:" -l 10)
-            [ -z "$sel" ] && return
-
-            mac=${sel%% *}
-
+            mac=${selected%% *}
             if bluetoothctl disconnect "$mac" >/dev/null 2>&1; then
                 notify "Bluetooth" "Disconnected"
             else
                 notify "Bluetooth" "Failed to disconnect"
+                return 1
             fi
             ;;
     esac
