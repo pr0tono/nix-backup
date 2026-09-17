@@ -113,7 +113,6 @@
         pictureInPicture.enable = true;
       	plainFolderIcon.enable = true;
         platformIndicators.enable = true;
-        questify.enable = true;
         quoter.enable = true;
       	viewRaw.enable = true;
         zipPreview.enable = true;
