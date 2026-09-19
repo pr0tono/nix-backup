@@ -57,6 +57,10 @@
             install_url = moz "video-downloadhelper";
             installation_mode = "force_installed";
           };
+          "deArrow@ajay.app" = {
+            install_url = moz "dearrow";
+            installation_mode = "force_installed";
+          };
         };
     };
 

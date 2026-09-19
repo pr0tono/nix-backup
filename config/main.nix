@@ -11,6 +11,7 @@
     ./yazi.nix
     ./librewolf.nix
     ./sway/sway.nix
+    ./sway/rofi.nix
     ./sway/i3status.nix
     ./editors/vim.nix
     ./editors/vscodium.nix

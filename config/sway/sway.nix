@@ -19,7 +19,8 @@
         "Mod1+Shift+q" = "kill";
         "Print" = "exec --no-startup-id sh -c 'grim -g \"$(slurp)\" - | wl-copy'";
         "Shift+Print" = "exec --no-startup-id grim - | wl-copy";
-        "Mod1+space" = "exec j4-dmenu-desktop --dmenu=\"dmenu -i -b -nb '#1e1e2e' -nf '#cdd6f4' -sb '#f5e0dc' -sf '#1e1e2e'\"";
+        "Mod1+space" = "exec rofi -show drun";
+        "Mod1+slash" = "exec rofi -show keys";
 
         "Mod1+h" = "focus left";
         "Mod1+j" = "focus down";
@@ -206,15 +207,13 @@
    font=Maple Mono NF CN 8 
   '';
     home.packages = with pkgs; [
-    xss-lock
-    udiskie
-    grim
-    wl-clipboard
-    slurp
-    xclip
-    dmenu
-    j4-dmenu-desktop
     brightnessctl
+    grim
+    slurp
+    udiskie
+    wl-clipboard
+    xclip
+    xss-lock
   ];
 }
 
