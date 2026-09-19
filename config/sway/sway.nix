@@ -17,8 +17,8 @@
         "Mod1+v" = "exec codium";
         "Mod1+t" = "exec tor-browser";
         "Mod1+Shift+q" = "kill";
-        "Shift+Print" = "exec --no-startup-id sh -c 'grim -g \"$(slurp)\" - | wl-copy'";
-        "Print" = "exec --no-startup-id grim - | wl-copy";
+        "Print" = "exec --no-startup-id sh -c 'grim -g \"$(slurp)\" - | wl-copy'";
+        "Shift+Print" = "exec --no-startup-id grim - | wl-copy";
         "Mod1+space" = "exec j4-dmenu-desktop --dmenu=\"dmenu -i -b -nb '#1e1e2e' -nf '#cdd6f4' -sb '#f5e0dc' -sf '#1e1e2e'\"";
 
         "Mod1+h" = "focus left";
@@ -61,7 +61,7 @@
         "Mod1+Shift+r" = "reload";
 
         "Mod1+Shift+m" =
-          "exec \"swaynag -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'i3-msg exit'\"";
+          "exec \"swaynag -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'swaymsg exit'\"";
 
         "Mod1+r" = "mode resize";
 
@@ -194,6 +194,10 @@
         {
           command =
             "udiskie --notify --automount";
+        }
+        {
+          command =
+            "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
         }
       ];
     };

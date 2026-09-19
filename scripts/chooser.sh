@@ -118,12 +118,20 @@ bluetooth_menu() {
     local choice
     choice=$(
         printf '%s\n' \
+	    "Reconnect Devices"\
             "Connect Device" \
             "Disconnect Device" |
         dmenu_styled -p "Bluetooth:"
     )
 
-    case "$choice" in
+    case "$choice" in 
+	"Reconnect Devices")
+		bluetoothctl power on
+		bluetoothctl scan on
+		sleep 5
+		bluetoothctl scan off
+		;;
+
         "Connect Device")
             bluetoothctl power on >/dev/null 2>&1 || {
                 notify "Bluetooth" "Could not power on Bluetooth"

@@ -97,8 +97,14 @@
 
    xdg.portal = {
     enable = true;
+    wlr.enable = true;
     config.common.default = "*";
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    wlr.settings.screencast = {
+      output_name = "";
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+    };
   };
 
   virtualisation = {

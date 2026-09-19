@@ -8,7 +8,6 @@
     docker.docker
     ms-python.python
     ms-vscode-remote.remote-ssh
-    ms-vscode.cpptools
     ms-vscode.makefile-tools
     oracle.oracle-java
     prettier.prettier-vscode

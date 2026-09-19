@@ -27,6 +27,7 @@
     mouse.accelProfile = "flat";
   };
 
+  
 
   pipewire = {
     enable = true;

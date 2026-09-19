@@ -15,6 +15,8 @@
           "https://youtube.com"
           "https://proton.me"
           "https://anidb.app"
+          "https://messenger.com"
+          "https:/facebook.com"
         ];
       };
 
