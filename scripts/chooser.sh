@@ -379,6 +379,7 @@ main_menu() {
             "Monitor Preset" \
             "VMs" \
             "WiFi" \
+	    "SSH" \
             "Bluetooth" |
             rofi -dmenu -i -p "Choose:"
     )
@@ -407,6 +408,10 @@ main_menu() {
         "WiFi")
             wifi_menu
             ;;
+
+	"SSH")
+	    rofi -show ssh
+	    ;;
 
         "Bluetooth")
             bluetooth_menu
