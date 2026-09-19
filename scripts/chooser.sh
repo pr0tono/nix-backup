@@ -238,13 +238,11 @@ bluetooth_menu() {
             bluetoothctl scan on >/dev/null 2>&1 &
             scan_pid=$!
 
-            sleep 5
+            sleep 2 
 
             bluetoothctl scan off >/dev/null 2>&1
             kill "$scan_pid" 2>/dev/null || true
             wait "$scan_pid" 2>/dev/null || true
-
-            notify "Bluetooth" "Device scan completed"
             ;;
 
         "Connect Device")
