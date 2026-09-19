@@ -93,9 +93,9 @@ youtube() {
     )
 
     if [ -n "$subtitle" ]; then
-        mpv --sub-file="$subtitle" "$url"
+        mpv --sub-file="$subtitle" "$url" --volume=50
     else
-        mpv "$url"
+        mpv "$url" --volume=50
     fi
 }
 
