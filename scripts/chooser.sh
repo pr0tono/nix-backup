@@ -7,6 +7,9 @@ notify() {
 youtube() {
     local query results display selected number video_id url
     local subtitle_dir subtitle
+    local tab
+
+    tab=$(printf '\t')
 
     query=$(rofi -dmenu -i -p "YouTube Search:")
     [ -z "$query" ] && return
@@ -14,8 +17,11 @@ youtube() {
     results=$(
         yt-dlp \
             --flat-playlist \
+            --playlist-end 15 \
             --no-warnings \
-            --print '%(id)s\t%(title)s\t%(uploader)s' \
+            --skip-download \
+            --js-runtimes deno \
+            --print "%(id)s${tab}%(title)s${tab}%(channel)s" \
             "ytsearch15:$query" 2>/dev/null
     )
 
@@ -26,7 +32,20 @@ youtube() {
 
     display=$(
         printf '%s\n' "$results" |
-            awk -F '\t' '{printf "%d. %s — %s\n", NR, $2, $3}'
+            awk -F "$tab" '
+                {
+                    title = $2
+                    channel = $3
+
+                    if (title == "" || title == "NA" || title == "N/A")
+                        title = "Untitled video"
+
+                    if (channel == "" || channel == "NA" || channel == "N/A")
+                        channel = "Unknown channel"
+
+                    printf "%d. %s — %s\n", NR, title, channel
+                }
+            '
     )
 
     selected=$(
@@ -36,8 +55,10 @@ youtube() {
 
     [ -z "$selected" ] && return
 
-    number=$(printf '%s\n' "$selected" |
-        sed 's/^\([0-9]*\)\..*/\1/')
+    number=$(
+        printf '%s\n' "$selected" |
+            sed 's/^\([0-9]*\)\..*/\1/'
+    )
 
     video_id=$(
         printf '%s\n' "$results" |
