@@ -395,6 +395,7 @@ main_menu() {
     choice=$(
         printf '%s\n' \
             "YouTube" \
+	    "Anime" \
             "Ollama" \
             "Sound" \
             "Monitor Preset" \
@@ -409,6 +410,10 @@ main_menu() {
         "YouTube")
             youtube
             ;;
+
+	"Anime")
+	    /etc/nixos/scripts/ani-cli.sh --rofi &
+	    ;;
 
         "Ollama")
             kitty --hold -e ollama run llama3.2
