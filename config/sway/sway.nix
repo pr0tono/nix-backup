@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.sway;
+    package = pkgs.sway; 
     wrapperFeatures.gtk = true;
     config = {
       modifier = "Mod1";

@@ -18,7 +18,8 @@
     settings = {
       bigclock = "en";
       use-logind = true;
-      animation = "doom";
+      animation = "colormix";
+      colormix_col1 = "0xFFFFA500";
     };
   };
 
