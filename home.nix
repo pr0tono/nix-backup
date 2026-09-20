@@ -64,6 +64,7 @@
     pysolfc
     qemu
     spotdl
+    streamlink
     system-config-printer
     tor-browser
     unrar

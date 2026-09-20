@@ -6,7 +6,6 @@
     package = pkgs.rofi;
     modes = [
       "drun"
-      "run"
       "ssh"
       "keys"
     ];
