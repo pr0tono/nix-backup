@@ -65,7 +65,7 @@
   #printers
   printing = {
    enable = true;
-   drivers = with pkgs; [ splix samsung-unified-linux-driver hplip ];
+   drivers = with pkgs; [ splix hplip ];
   };
   ipp-usb.enable = true;
   avahi = {

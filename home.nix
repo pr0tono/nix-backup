@@ -58,6 +58,7 @@
     pamixer
     pavucontrol
     picom
+    pipes
     prismlauncher
     protonup-qt
     pulseaudio
