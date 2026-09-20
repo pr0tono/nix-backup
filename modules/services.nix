@@ -12,8 +12,10 @@
       ];
     };
  services = {
-   # ly kinda meh dm (but works!)  
-  displayManager.ly = {
+   displayManager = {
+    sessionPackages = [ pkgs.sway ];
+    defaultSession = "sway"; 
+    ly = {
     enable = true;
     settings = {
       bigclock = "en";
@@ -22,7 +24,7 @@
       colormix_col1 = "0xFFFFA500";
     };
   };
-
+};
   libinput = {
     enable = true;
     mouse.accelProfile = "flat";
