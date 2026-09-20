@@ -318,13 +318,13 @@ main_menu() {
             	;;
 
 	   "Anime")
-	    	/etc/nixos/scripts/ani-cli.sh --rofi &
+	    	/etc/nixos/scripts/chooser/ani-cli.sh --rofi &
 	    	;;
 
 	   "Twitch")
 	    	channels=$(cat ~/.local/state/twitchmpv/recent_channels)
 	    	chosen=$(echo "$channels" | rofi -dmenu -i -p "Twitch")
-	    	[ -n "$chosen" ] && /etc/nixos/scripts/twitchmpv.sh "$chosen"
+	    	[ -n "$chosen" ] && /etc/nixos/scripts/chooser/twitchmpv.sh "$chosen"
 	    	;;
 	esac
 	    ;;
