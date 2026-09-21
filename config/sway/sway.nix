@@ -4,11 +4,10 @@
     package = pkgs.sway; 
     wrapperFeatures.gtk = true;
     config = {
-      modifier = "Mod1";
       input."type:pointer" = {
-        accel_profile = "flat";
-        pointer_accel = "0";
+        pointer_accel = "-0.7";
       };
+      modifier = "Mod1";
       keybindings = {
         "Mod1+Return" = "exec kitty";
         "Mod1+Shift+0" = "exec /etc/nixos/scripts/chooser.sh";
