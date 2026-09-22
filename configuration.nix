@@ -11,7 +11,7 @@
   boot = {
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 2;
-    kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "8250.nr_uarts=0" ];
     kernel.sysctl."vm.swappiness" = 10;
     loader.grub = {

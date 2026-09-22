@@ -13,6 +13,7 @@
           "https://github.com"
           "https://accounts.google.com"
           "https://youtube.com"
+          "https://twitch.tv"
           "https://proton.me"
           "https://anidb.app"
           "https://messenger.com"
