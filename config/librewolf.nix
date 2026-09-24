@@ -2,9 +2,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.librewolf;
-
     languagePacks = [ "en-US" ];
-
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
@@ -63,7 +61,7 @@
             installation_mode = "force_installed";
           };
         };
-    };
+      };
 
     profiles.default = {
       settings = {

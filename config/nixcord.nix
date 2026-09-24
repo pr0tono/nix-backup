@@ -2,12 +2,10 @@
   programs.nixcord = {
     enable = true;
     discord.equicord.enable = true;
-
     config = {
       useQuickCss = false;
       frameless = true;
       enabledThemes = [ "catppuccin-mocha.css" ];
-
       plugins = {
         alwaysExpandRoles.enable = true;
         alwaysTrust.enable = true;
@@ -118,10 +116,10 @@
         zipPreview.enable = true;
       };
     };
-   };
+  };
 
   home.file = {
-   ".config/Equicord/themes/catppuccin-mocha.css".source =
-   ./catppuccin-mocha.css;
+    ".config/Equicord/themes/catppuccin-mocha.css".source =
+    ./catppuccin-mocha.css;
   };
 }   

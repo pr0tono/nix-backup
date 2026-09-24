@@ -1,6 +1,4 @@
-{ pkgs, nixcord, inputs, ... }:
-
-{
+{ pkgs, nixcord, inputs, ... }: {
   imports = [
     inputs.catppuccin-nix.homeModules.catppuccin
     nixcord.homeModules.nixcord
@@ -9,16 +7,16 @@
     ./modules/opsec-shit.nix   
     ./modules/python.nix
     ./config/main.nix
-     ];
+  ];
     
-     catppuccin = {
-       flavor = "mocha";
-       accent = "rosewater";
-       autoEnable = false;
-       enable = true;
-     };
-    home.sessionVariables.EDITOR = "vim";
-    home.packages = with pkgs; [
+  catppuccin = {
+    flavor = "mocha";
+    accent = "rosewater";
+    autoEnable = false;
+    enable = true;
+  };
+  home.sessionVariables.EDITOR = "vim";
+  home.packages = with pkgs; [
     alsa-lib
     calc
     cbonsai

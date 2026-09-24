@@ -1,7 +1,7 @@
  { pkgs, ... } : {
    home.packages = with pkgs; [
-     android-tools
      aircrack-ng
+     android-tools
      curl
      dig
      dirb
@@ -15,11 +15,12 @@
      kismet
      masscan
      metasploit
-     netcat
      net-tools
+     netcat
      nikto
      nmap
      perl
+     pkg-config
      smbmap
      socat
      sqlmap
@@ -27,5 +28,5 @@
      wget
      whois
      wireshark
-    ];
-  } 
+   ];
+} 

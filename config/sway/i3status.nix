@@ -15,30 +15,28 @@
       settings = {
         format_up = "󰖩";
         format_down = "󰖪";
-        };
       };
+    };
       "ethernet eth0" = {
         enable = true;
         position = 2;
         settings = {
           format_up = "";
           format_down = "";
-        };
       };
+    };
       "ethernet enp4s0f4u1" = {
         enable = true;
         position = 2;
         settings = {
           format_up = "";
           format_down = "";
-        };
-       };
+      };
+     };
       "battery 0" = {
         position = 3;
-        settings = {
-          format = "%percentage %remaining";
-        };
-      };
+        settings.format = "%percentage %remaining";
+    };
       "volume master" = {
         position = 4;
         settings = {
@@ -46,13 +44,11 @@
           format_muted = "Vol muted (%volume)";
           device = "default";
           mixer = "Master";
-        };
       };
+    };
       "tztime local" = {
         position = 5;
-        settings = {
-          format = "%Y-%m-%d %H:%M:%S";
-        };
+        settings.format = "%Y-%m-%d %H:%M:%S";
       };
     };
   };

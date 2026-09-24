@@ -36,7 +36,6 @@
   } @ inputs: {
     nixosConfigurations.vivobook-16 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-
       specialArgs = {
         inherit 
           inputs
@@ -44,7 +43,7 @@
           nixcord 
           spicetify-nix 
           catppuccin-nix;
-      };
+        };
 
       modules = [
         ./configuration.nix

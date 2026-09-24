@@ -1,6 +1,4 @@
-{ pkgs, millennium, ... }:
-
-  {
+{ pkgs, millennium, ... }: { # i love nixos
   imports = [
     ./hardware-configuration.nix
     ./modules/services.nix 
@@ -15,11 +13,11 @@
     kernelParams = [ "8250.nr_uarts=0" ];
     kernel.sysctl."vm.swappiness" = 10;
     loader.grub = {
-     enable = true;
-     efiSupport = true;
-     device = "nodev";
-     theme = pkgs.catppuccin-grub;
-    };
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      theme = pkgs.catppuccin-grub;
+     };
   };
 
   networking = {
@@ -27,12 +25,14 @@
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
     firewall = {
-    enable = true;
-    trustedInterfaces = [ "tailscale0" ];
-    allowedTCPPorts = [ 22 80 443 25565 ];
-    allowedUDPPorts = [ 25565 ];
-    allowPing = false;
-    };
+      enable = true;
+      trustedInterfaces = [ "tailscale0" ];
+      allowedTCPPorts = [ 22 80 443 25565 ];
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPorts = [ 25565 ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowPing = false;
+     };
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -68,8 +68,8 @@
 
   hardware = {
     graphics = {
-     enable = true;
-     enable32Bit = true;
+      enable = true;
+      enable32Bit = true;
      };
     bluetooth = {
       enable = true;
@@ -80,23 +80,24 @@
   };
 
   programs = {
-   sway.enable = true;
-   zsh.enable = true;
-   git.enable = true;
-   nix-ld.enable = true;
-   appimage = {
-     enable = true;
-     binfmt = true;
-    };
-    steam = {
+    sway.enable = true;
+    zsh.enable = true;
+    git.enable = true;
+    kdeconnect.enable = true;
+    nix-ld.enable = true;
+    appimage = {
       enable = true;
-      package = pkgs.millennium-steam;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-   };
-  };
+      binfmt = true;
+     };
+     steam = {
+       enable = true;
+       package = pkgs.millennium-steam;
+       remotePlay.openFirewall = true;
+       dedicatedServer.openFirewall = true;
+     };
+    };
 
-   xdg.portal = {
+  xdg.portal = {
     enable = true;
     wlr.enable = true;
     config.common.default = "*";
@@ -117,18 +118,17 @@
   };
 
   nix = {
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly"; 
+    };
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 2d";
-    };
-    optimise.automatic = true;
   };
+
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [ millennium.overlays.default ];

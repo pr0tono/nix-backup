@@ -13,15 +13,15 @@
         home_symbol = "~";
       };
       time = {
-          time_format = "%R";
-          style = "dimmed white";
-          format = "[$time]($style)";
+        time_format = "%R";
+        style = "dimmed white";
+        format = "[$time]($style)";
       };
       character = {
-          success_symbol = "[](bold white)";
-          error_symbol = "[](bold red)";
-          vicmd_symbol = "[](bold yellow)";
-       };
+        success_symbol = "[](bold white)";
+        error_symbol = "[](bold red)";
+        vicmd_symbol = "[](bold yellow)";
+      };
     };
   };
 }

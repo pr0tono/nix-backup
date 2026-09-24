@@ -4,9 +4,7 @@
     package = pkgs.sway; 
     wrapperFeatures.gtk = true;
     config = {
-      input."type:pointer" = {
-        pointer_accel = "-0.7";
-      };
+      input."type:pointer".pointer_accel = "-0.7";
       modifier = "Mod1";
       keybindings = {
         "Mod1+Return" = "exec kitty";
@@ -60,6 +58,9 @@
 
         "Mod1+Shift+r" = "reload";
 
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+
         "Mod1+Shift+m" =
           "exec \"swaynag -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'swaymsg exit'\"";
 
@@ -77,11 +78,6 @@
         "XF86AudioMicMute" =
           "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && killall -SIGUSR1 i3status";
 
-        "XF86MonBrightnessUp" =
-          "exec brightnessctl set +5%";
-
-        "XF86MonBrightnessDown" =
-          "exec brightnessctl set 5%-";
       };
 
       gaps = {
@@ -192,12 +188,14 @@
 
       startup = [
         {
-          command =
-            "udiskie --notify --automount";
+          command = "udiskie --notify --automount";
         }
         {
-          command =
-            "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+          command = "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+        }
+        {
+          command = "pkill -x swayidle; swayidle -w timeout 300 'foot --app-id=screensaver --fullscreen -e mpv /etc/nixos/config/example/bad_apple.mp4 --vo=tct --no-audio -loop --really-quiet --panscan=1 --osd-level=0' resume 'swaymsg \"[app_id=screensaver] kill\"";
+          always = true;
         }
       ];
     };
@@ -205,7 +203,7 @@
   xdg.configFile."swaynag/config".text = ''
    font=Maple Mono NF CN 8 
   '';
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     brightnessctl
     grim
     slurp
