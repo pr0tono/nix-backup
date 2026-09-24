@@ -7,17 +7,19 @@
   ];
 
   boot = {
-    loader.efi.canTouchEfiVariables = true;
-    loader.timeout = 2;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      timeout = 2;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        theme = pkgs.catppuccin-grub;
+      };
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "8250.nr_uarts=0" ];
     kernel.sysctl."vm.swappiness" = 10;
-    loader.grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-      theme = pkgs.catppuccin-grub;
-     };
   };
 
   networking = {
@@ -32,7 +34,7 @@
       allowedUDPPorts = [ 25565 ];
       allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
       allowPing = false;
-     };
+    };
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -62,15 +64,15 @@
         users = [ "protono" ];
         keepEnv = true;
         persist = true;
-      }];
-    };
-  };
+     }];
+   };
+ };
 
   hardware = {
     graphics = {
       enable = true;
       enable32Bit = true;
-     };
+    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -88,14 +90,14 @@
     appimage = {
       enable = true;
       binfmt = true;
-     };
+    };
      steam = {
        enable = true;
        package = pkgs.millennium-steam;
        remotePlay.openFirewall = true;
        dedicatedServer.openFirewall = true;
      };
-    };
+   };
 
   xdg.portal = {
     enable = true;
