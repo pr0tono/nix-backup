@@ -17,12 +17,10 @@
       clear = "clear; fastfetch";
       rebuild = "doas nixos-rebuild switch --flake /etc/nixos#vivobook-16";
       upd = "doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16";
-      ll = "ls -l";
-      la = "ls -a";
-      bad_apple = "mpv --vo=caca /home/protono/old_shit/bad_apple.webm --volume=80";
       doom = "doomretro /etc/nixos/config/doom1.wad";
       weather = "curl wttr.in";
       backup = "sh /etc/nixos/scripts/nixos-backup.sh";
+      nsearch = "nh search";
     };
     initContent = ''
       fastfetch 

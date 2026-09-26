@@ -48,6 +48,7 @@
     meow
     mpv
     ncdu
+    nh
     obs-studio
     obsidian
     ollama
