@@ -194,7 +194,7 @@
           command = "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
         }
         {
-          command = "pkill -x swayidle; swayidle -w timeout 300 'foot --app-id=screensaver --fullscreen -e mpv /etc/nixos/config/example/bad_apple.mp4 --vo=tct --no-audio -loop --really-quiet --panscan=1 --osd-level=0' resume 'swaymsg \"[app_id=screensaver] kill\"";
+          command = "pkill -x swayidle; swayidle -w timeout 300 'foot --app-id=screensaver --fullscreen -e pipes.sh -p 20 -r 10000' resume 'swaymsg \"[app_id=screensaver] kill\"";
           always = true;
         }
       ];

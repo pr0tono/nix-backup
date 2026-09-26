@@ -7,6 +7,7 @@
       frameless = true;
       enabledThemes = [ "catppuccin-mocha.css" ];
       plugins = {
+        addAttachments.enable = true;
         alwaysExpandRoles.enable = true;
         alwaysTrust.enable = true;
         betterActivities.enable = true;
@@ -102,7 +103,7 @@
         showHiddenChannels.enable = true;
       	showHiddenThings.enable = true;
         silentTyping.enable = true;
-        summaries.enable = true;
+        #summaries.enable = true;
       	spotifyCrack.enable = true;
         voiceChatUtilities.enable = true;
         pauseInvitesForever.enable = true;

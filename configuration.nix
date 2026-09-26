@@ -9,7 +9,7 @@
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = 2;
+      timeout = 1;
       grub = {
         enable = true;
         efiSupport = true;
@@ -85,19 +85,18 @@
     sway.enable = true;
     zsh.enable = true;
     git.enable = true;
-    kdeconnect.enable = true;
     nix-ld.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
     };
-     steam = {
-       enable = true;
-       package = pkgs.millennium-steam;
-       remotePlay.openFirewall = true;
-       dedicatedServer.openFirewall = true;
-     };
-   };
+    steam = {
+      enable = true;
+      package = pkgs.millennium-steam;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+  };
 
   xdg.portal = {
     enable = true;
@@ -114,7 +113,6 @@
   virtualisation = {
     waydroid.enable = true;
     waydroid.package = pkgs.waydroid-nftables;
-    docker.enable = true;
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
   };
