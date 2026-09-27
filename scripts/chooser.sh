@@ -65,7 +65,8 @@ wifi_menu() {
                 notify "WiFi" "No active WiFi connection"
             fi
             ;;
-    esac
+
+esac
 }
 
 vms_menu() {

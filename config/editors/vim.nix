@@ -3,8 +3,8 @@
     plugins = with pkgs.vimPlugins; [ 
       auto-pairs 
       catppuccin-vim 
-      fzf-vim
-      vim-airline 
+      lightline-vim
+      lightline-ale
       ale
     ];
     enable = true;
@@ -20,13 +20,15 @@
       set mouse=a
       set nobackup
       set nocompatible
+      set cursorline
       set termguicolors
       set wildmenu
       syntax enable
-      map <F4> :FZF<CR>
       let &t_SI = "\e[6 q"
       let &t_EI = "\e[2 q"
-      let g:asyncomplete_auto_popup = 1
+      let g:lightline = {
+      \ 'colorscheme': 'srcery_drk',
+      \ }
     '';
   };
 }
