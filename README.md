@@ -1,22 +1,19 @@
-<h2 align="center"> Protono's Nix Config</h2>
-Recommended hardware:
-About 6gb of ram (for the installation the os uses about a gb in standby)\
-50gb of usable space\
-an okay cpu\
+<h2 align="center"> Protono's Nixos Config</h2>
 
-Os uses about 1 gb of ram in standby
+> [!NOTE]
+> This is a config for may not work on your hardware and I'm still a noob with this stuff so stuff may brake
 
 **TODO:**
 - [  ] finish the readme
 - [  ] add theme swapping in real time to the config
 - [  ] try to take care of this lil repo thingy
 
-##Components
+## Components
 
 |        |   |
 | ------ | ---------------------------------------- |
 | Terminal Emulator | [Kitty](https://github.com/kovidgoyal/kitty)|
-| Shell | [Zsh](https://www.zsh.org) |
+| Shell | [Zsh](https://www.zsh.org) + [Starship](https://github.com/starship/starship) |
 | File Manager  | [Yazi](https://github.com/sxyazi/yazi) |
 | Browser: | [Librewolf](https://librewolf.net/) |
 | Windows Manager | [Sway](https://swaywm.org/) |
