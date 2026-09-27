@@ -12,7 +12,7 @@ Os takes about 1 gb with a terminal
 - [  ] try to take care of this lil repo thingy
 
 ---------------------------------------------------------------------|
-| Terminal Emulator:       | [Kitty][https://github.com/kovidgoyal/kitty]
+| Terminal Emulator:       | [Kitty][Kitty]
 | Shell:                   | 'Zsh'
 | File Manager:            | 'Yazi'
 | Browser:                 | 'Librewolf'
@@ -27,3 +27,6 @@ Os takes about 1 gb with a terminal
 **Shell Aliases:**
 
 'nsearch' nh search
+
+
+[Kitty]:https://github.com/kovidgoyal/kitty
