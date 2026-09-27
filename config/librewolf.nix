@@ -59,6 +59,10 @@
           "deArrow@ajay.app" = {
             install_url = moz "dearrow";
             installation_mode = "force_installed";
+          "{60493d8c-aec8-448e-a247-5d2cfa047d69}" = {
+            installation_url = moz "ambient-light-for-youtube";
+            installation_mode = "force_installed";
+            };
           };
         };
       };
