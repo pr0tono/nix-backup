@@ -1,7 +1,7 @@
 <h2 align="center"> Protono's Nixos Config</h2>
 
 > [!NOTE]
-> This is a config for may not work on your hardware and I'm still a noob with this stuff so stuff may brake
+> This is config may not work on your hardware. I'm still a noob with this stuff so it will brake at some point
 
 **TODO:**
 - [  ] finish the readme
