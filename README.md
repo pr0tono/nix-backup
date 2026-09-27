@@ -11,8 +11,8 @@ Os takes about 1 gb with a terminal
 - [  ] add theme swapping in real time to the config
 - [  ] try to take care of this lil repo thingy
 
-----------------------------------------------------------|
-| Terminal Emulator:       | 'Kitty'
+---------------------------------------------------------------------|
+| Terminal Emulator:       | [Kitty][Kitty]
 | Shell:                   | 'Zsh'
 | File Manager:            | 'Yazi'
 | Browser:                 | 'Librewolf'
@@ -24,6 +24,6 @@ Os takes about 1 gb with a terminal
 | Fonts:                   | 'Maple Mono NF CN'
 |
 
-Shell Aliases:
+**Shell Aliases:**
 
-nsearch nh search
+'nsearch' nh search
