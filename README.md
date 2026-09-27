@@ -5,21 +5,23 @@ an okay cpu
 
 Os takes about 1 gb with a terminal
 
-**TODO:**\
+**TODO:**
 - [  ] finish the readme
 - [  ] add theme swapping in real time to the config
 - [  ] try to take care of this lil repo thingy
+
+##
 ----------------------------------------------------------|
-| Terminal Emulator:       | 'Kitty'                      |
-| Shell:                   | 'Zsh'                        |
-| File Manager:            | 'Yazi'                       |
-| Browser:                 | 'Librewolf'                  |
-| Windows Manager:         | 'Sway'                       |
-| Application Launcher:    | 'Rofi'                       |
-| Text Editor:             | 'Vscodium + Vim'             |
-| Color Scheme:            | 'Catppuccin Mocha Rosewater' |
-| System Resource Monitor: | 'Btop'                       | 
-| Fonts:                   | 'Maple Mono NF CN'           |
+| Terminal Emulator:       | 'Kitty'
+| Shell:                   | 'Zsh'
+| File Manager:            | 'Yazi'
+| Browser:                 | 'Librewolf'
+| Windows Manager:         | 'Sway'
+| Application Launcher:    | 'Rofi'
+| Text Editor:             | 'Vscodium + Vim'
+| Color Scheme:            | 'Catppuccin Mocha Rosewater'
+| System Resource Monitor: | 'Btop' 
+| Fonts:                   | 'Maple Mono NF CN'
 
 Shell Aliases:
 
