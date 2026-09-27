@@ -10,7 +10,7 @@
 
 ## Components
 
-|        |   |
+| | Program |
 | ------ | ---------------------------------------- |
 | Terminal Emulator | [Kitty](https://github.com/kovidgoyal/kitty)|
 | Shell | [Zsh](https://www.zsh.org) + [Starship](https://github.com/starship/starship) |
