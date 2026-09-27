@@ -7,11 +7,10 @@
         follow = "mouse";
         indicate_hidden = "yes";
         shrink = "no";
-        transparency = 0;
         separator_height = 2;
         padding = 12;
         horizontal_padding = 15;
-        font = "monospace 10";
+        font = "Maple Mono NF CN 10";
         line_height = 0;
         markup = "full";
         format = "<b>%s</b>\n%b";
