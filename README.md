@@ -32,4 +32,6 @@
 | **clear** | clear; fastfetch |
 | **upd** | doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
 | **weather** | curl wttr.in |
-| **backup** | ```sh sh /etc/nixos/scripts/nixos-backup.sh``` |
+| **backup** | ```sh 
+sh /etc/nixos/scripts/nixos-backup.sh 
+``` |
