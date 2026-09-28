@@ -1,7 +1,7 @@
 <h2 align="center"> Protono's Nixos Config</h2>
 
 > [!NOTE]
-> This is config may not work on your hardware. I'm still a noob with this stuff so it will brake at some point
+> This config may not work on your hardware. I'm still a noob with this stuff so it will brake at some point
 
 **TODO:**
 - [  ] finish the readme
@@ -15,7 +15,7 @@
 | Terminal Emulator | [Kitty](https://github.com/kovidgoyal/kitty)|
 | Shell | [Zsh](https://www.zsh.org) + [Starship](https://github.com/starship/starship) |
 | File Manager  | [Yazi](https://github.com/sxyazi/yazi) |
-| Browser: | [Librewolf](https://librewolf.net/) |
+| Browser | [Librewolf](https://librewolf.net/) |
 | Windows Manager | [Sway](https://swaywm.org/) |
 | Application Launcher | [Rofi](https://github.com/davatorium/rofi) |
 | Text Editor | [Vscodium](https://github.com/VSCodium/vscodium) + [Vim](https://www.vim.org/) |
@@ -23,9 +23,15 @@
 | System Resource Monitor | [Btop](https://github.com/aristocratos/btop) |
 | Fonts | [Maple Mono NF CN](https://github.com/subframe7536/Maple-font) |
 
-**Shell Aliases:**
+## Shell Aliases
+
 | Alias | Command |
 | ------ | -------------------------------------------------------------- |
-| *nsearch* | nh search |
-| *rebuild* | doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
-| *clear* | clear; fastfetch |
+| **nsearch** | nh search |
+| **rebuild** | doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
+| **clear** | clear; fastfetch |
+| **upd** | doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
+| **weather** | curl wttr.in |
+| **backup** | '''sh 
+sh /etc/nixos/scripts/nixos-backup.sh
+''' |

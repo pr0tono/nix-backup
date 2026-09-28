@@ -17,7 +17,6 @@
       clear = "clear; fastfetch";
       rebuild = "doas nixos-rebuild switch --flake /etc/nixos#vivobook-16";
       upd = "doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16";
-      doom = "doomretro /etc/nixos/config/doom1.wad";
       weather = "curl wttr.in";
       backup = "sh /etc/nixos/scripts/nixos-backup.sh";
       nsearch = "nh search";

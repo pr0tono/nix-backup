@@ -25,6 +25,7 @@
      socat
      sqlmap
      tcpdump
+     trippy
      wget
      whois
      wireshark
