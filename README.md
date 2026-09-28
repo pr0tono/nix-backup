@@ -1,14 +1,11 @@
 <h2 align="center"> Protono's Nixos Config</h2>
 
-> [!NOTE]
-> This config may not work on your hardware. I'm still a noob with this stuff so it will brake at some point
-
 **TODO:**
 - [  ] finish the readme
 - [  ] add theme swapping in real time to the config
 - [  ] try to take care of this lil repo thingy
 
-## Components
+**Components**
 
 | | Program |
 | ------ | ---------------------------------------- |
@@ -23,15 +20,16 @@
 | System Resource Monitor | [Btop](https://github.com/aristocratos/btop) |
 | Fonts | [Maple Mono NF CN](https://github.com/subframe7536/Maple-font) |
 
-## Shell Aliases
+**Shell Aliases**
 
 | Alias | Command |
-| ------ | -------------------------------------------------------------- |
+| ----- | ------- |
 | **nsearch** | nh search |
 | **rebuild** | doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
 | **clear** | clear; fastfetch |
 | **upd** | doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
 | **weather** | curl wttr.in |
-| **backup** | ```sh 
-sh /etc/nixos/scripts/nixos-backup.sh 
-``` |
+| **backup** | sh /etc/nixos/scripts/nixos-backup.sh 
+
+**Sources:**
+Wallpaper: https://github.com/orangci/walls-catppuccin-mocha/blob/master/pine.jpg
