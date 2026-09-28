@@ -1,3 +1,5 @@
+<p align="center">
+<img src="./config/example/NixConfig.png"></p>
 <h2 align="center"> Protono's Nixos Config</h2>
 
 **TODO:**
@@ -31,5 +33,5 @@
 | **weather** | curl wttr.in |
 | **backup** | sh /etc/nixos/scripts/nixos-backup.sh 
 
-**Sources:**
+**Sources:** \
 Wallpaper: https://github.com/orangci/walls-catppuccin-mocha/blob/master/pine.jpg
