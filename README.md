@@ -1,6 +1,6 @@
+<h2 align="center"> Protono's Nixos Config</h2>
 <p align="center">
 <img src="./config/example/NixConfig.png"></p>
-<h2 align="center"> Protono's Nixos Config</h2>
 
 **TODO:**
 - [  ] finish the readme
