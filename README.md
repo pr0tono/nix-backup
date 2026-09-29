@@ -2,11 +2,6 @@
 <p align="center">
 <img src="./config/example/NixConfig.png"></p>
 
-**TODO:**
-- [  ] finish the readme
-- [  ] add theme swapping in real time to the config
-- [  ] try to take care of this lil repo thingy
-
 **Components**
 
 | | Program |
@@ -32,6 +27,11 @@
 | **upd** | doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
 | **weather** | curl wttr.in |
 | **backup** | sh /etc/nixos/scripts/nixos-backup.sh 
+
+**TODO:**
+- [  ] finish the readme
+- [  ] add theme swapping in real time to the config
+- [  ] try to take care of this lil repo thingy
 
 **Sources:** \
 Wallpaper: https://github.com/orangci/walls-catppuccin-mocha/blob/master/pine.jpg
