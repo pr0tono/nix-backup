@@ -8,7 +8,7 @@ if [ "$init" = y ]
 	sudo mkdir -p /etc/nixos/
 	sudo nixos-generate-config
 	sudo rm /etc/nixos/configuration.nix
-	nix-shell -p git --run 'sudo git clone https://github.com/pr0tono/nix-backup.git /etc/nixos/'
+	nix-shell -p git --run 'sudo git clone https://github.com/pr0tono/nix-backup.git /etc/nixos/ -f'
 	sudo nixos-rebuild switch --flake /etc/nixos/#vivobook-16
 	read -rp "reboot? (y/N) " opt
 	 if [ "$opt" = y ] 
