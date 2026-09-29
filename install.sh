@@ -13,9 +13,9 @@ if [ "$init" = y ]
 	read -rp "reboot? (y/N) " opt
 	 if [ "$opt" = y ] 
 	 then : systemctl reboot
-	 else : exit
+	 else : exit 0
 	 fi
-else : exit
+else : exit 0
 fi
 
 
