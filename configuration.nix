@@ -2,7 +2,6 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/services.nix 
-    ./modules/power-profile.nix
     ./modules/fonts.nix
   ];
 

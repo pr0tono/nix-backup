@@ -193,6 +193,10 @@
           command = "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
         }
         {
+          command = "/etc/nixos/scripts/power.sh";
+          always = true;
+        }
+        {
           command = "/etc/nixos/scripts/mic.sh";
           always = true;
         }
