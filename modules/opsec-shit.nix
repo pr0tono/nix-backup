@@ -1,7 +1,6 @@
- { pkgs, ... } : {
+ { pkgs, ... } : { # like general internet tools idfk
    home.packages = with pkgs; [
      aircrack-ng
-     android-tools
      curl
      dig
      dirb
@@ -19,7 +18,6 @@
      netcat
      nikto
      nmap
-     perl
      pkg-config
      smbmap
      socat

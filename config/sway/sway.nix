@@ -12,7 +12,6 @@
         "Mod1+w" = "exec librewolf";
         "Mod1+e" = "exec --no-startup-id kitty -e yazi";
         "Mod1+v" = "exec codium";
-        "Mod1+t" = "exec tor-browser";
         "Mod1+Shift+q" = "kill";
         "Print" = "exec --no-startup-id sh -c 'grim -g \"$(slurp)\" - | wl-copy'";
         "Shift+Print" = "exec --no-startup-id grim - | wl-copy";
@@ -194,8 +193,7 @@
           command = "exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
         }
         {
-          command = "pkill -x swayidle; swayidle -w timeout 300 'foot --app-id=screensaver --fullscreen -e pipes.sh -p 20 -r 10000' resume 'swaymsg \"[app_id=screensaver] kill\"";
-          always = true;
+          command = "exec --no-startup-id sh /etc/nixos/scripts/mic.sh";
         }
       ];
     };
