@@ -32,6 +32,7 @@
 - [  ] finish the readme
 - [  ] add theme swapping in real time to the config
 - [  ] try to take care of this lil repo thingy
+- [  ] more machines support
 
 **Sources:** \
 Wallpaper: https://github.com/orangci/walls-catppuccin-mocha/blob/master/pine.jpg
