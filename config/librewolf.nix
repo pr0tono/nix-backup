@@ -75,9 +75,12 @@
       settings = {
         "browser.toolbars.bookmarks.visibility" = "never";
         "pdfjs.enableAltText" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "browser.tabs.allow_transparent_browser" = true;
         "sidebar.revamp" = false;
         "sidebar.visibility" = "hide-sidebar";
       };
+      userChrome = builtins.readFile ./librewolf_transparent.css;
     };
   };
 }
