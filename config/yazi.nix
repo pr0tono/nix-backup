@@ -20,7 +20,16 @@
         image_bound = [ 0 0 ];
       };
     };
+    keymap = {
+      input.prepend_keymap = [
+        { run = "plugin compress"; on = "<C-a>"; }
+      ];
+      mgr.prepend_keymap = [
+        { run = "plugin compress"; on = "<C-a>"; }
+      ];
+    };
     plugins = with pkgs.yaziPlugins; {
+      compress = compress;
       git = git;
       chmod = chmod;
       full-border = {
