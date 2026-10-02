@@ -22,10 +22,10 @@
     };
     keymap = {
       input.prepend_keymap = [
-        { run = "plugin compress"; on = "<C-a>"; }
+        { run = "plugin compress"; on = [ "c" "a" ]; }
       ];
       mgr.prepend_keymap = [
-        { run = "plugin compress"; on = "<C-a>"; }
+        { run = "plugin compress"; on = [ "c" "a" ]; }
       ];
     };
     plugins = with pkgs.yaziPlugins; {
