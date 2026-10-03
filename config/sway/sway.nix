@@ -18,19 +18,15 @@
         "Mod1+space" = "exec rofi -show drun";
         "Mod1+slash" = "exec rofi -show keys";
 
-        "Mod1+h" = "focus left";
-        "Mod1+j" = "focus down";
-        "Mod1+k" = "focus up";
-        "Mod1+l" = "focus right";
         "Mod1+Left" = "focus left";
         "Mod1+Down" = "focus down";
         "Mod1+Up" = "focus up";
         "Mod1+Right" = "focus right";
 
-        "Mod1+Shift+h" = "move left";
-        "Mod1+Shift+j" = "move down";
-        "Mod1+Shift+k" = "move up";
-        "Mod1+Shift+l" = "move right";
+        "Mod1+Shift+Left" = "move left";
+        "Mod1+Shift+Down" = "move down";
+        "Mod1+Shift+Up" = "move up";
+        "Mod1+Shift+Right" = "move right";
 
         "Mod1+Shift+f" = "fullscreen toggle";
         "Mod1+Shift+s" = "layout stacking";
