@@ -1,0 +1,31 @@
+ { pkgs, ... } : { # like general internet tools idfk
+   home.packages = with pkgs; [
+     aircrack-ng
+     curl
+     dig
+     dirb
+     dnsmasq
+     enum4linux-ng
+     ffuf
+     gobuster
+     hashcat
+     hylafaxplus
+     john
+     kismet
+     masscan
+     metasploit
+     net-tools
+     netcat
+     nikto
+     nmap
+     pkg-config
+     smbmap
+     socat
+     sqlmap
+     tcpdump
+     trippy
+     wget
+     whois
+     wireshark
+   ];
+} 
