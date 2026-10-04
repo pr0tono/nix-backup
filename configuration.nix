@@ -84,7 +84,6 @@
     sway.enable = true;
     zsh.enable = true;
     git.enable = true;
-    nix-ld.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
@@ -94,6 +93,27 @@
       package = pkgs.millennium-steam;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+    };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc
+        libGL
+        libX11
+        libXext
+        libXrandr
+        libXrender
+        libXcursor
+        libXfixes
+        alsa-lib
+        fontconfig
+        freetype
+        dbus
+        expat
+        zlib
+        bzip2
+        xz
+      ];
     };
   };
 

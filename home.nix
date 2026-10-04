@@ -16,8 +16,8 @@
   };
   home.sessionVariables.EDITOR = "vim";
   home.packages = with pkgs; [
-    android-tools
     alsa-lib
+    android-tools
     calc
     cbonsai
     chroma
@@ -25,6 +25,7 @@
     ddnet
     deluge
     doomretro
+    dosbox
     dunst
     elinks
     feh
