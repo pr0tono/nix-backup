@@ -1,0 +1,66 @@
+{ pkgs, ... }: {
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      acl
+      alsa-lib
+      alsa-lib
+      attr
+      bzip2
+      bzip2
+      curl
+      dbus
+      dbus
+      dbus-glib
+      expat
+      ffmpeg
+      fontconfig
+      fontconfig
+      freetype
+      freetype
+      glibc
+      libevdev
+      libffi
+      libGL
+      libGLU
+      libjpeg
+      libpng
+      libsodium
+      libssh
+      libudev0-shim
+      libusb1
+      libva
+      libX11
+      libXcomposite
+      libXcursor
+      libXdamage
+      libXext
+      libXfixes
+      libXi
+      libXinerama
+      libxml2
+      libXrandr
+      libXrender
+      libXtst
+      libXxf86vm
+      ncurses
+      openssl
+      pipewire
+      pulseaudio
+      readline
+      SDL2
+      SDL2_image
+      SDL2_mixer
+      SDL2_ttf
+      sqlite
+      stdenv.cc.cc
+      stdenv.cc.cc.lib
+      systemd
+      udev
+      util-linux
+      xz
+      zlib
+      zstd
+    ];
+  };
+}
