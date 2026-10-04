@@ -3,7 +3,6 @@
     ./hardware-configuration.nix
     ./modules/services.nix 
     ./modules/fonts.nix
-    ./modules/nix-ld.nix
   ];
 
   boot = {
@@ -94,6 +93,27 @@
       package = pkgs.millennium-steam;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+    };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc
+        libGL
+        libX11
+        libXext
+        libXrandr
+        libXrender
+        libXcursor
+        libXfixes
+        alsa-lib
+        fontconfig
+        freetype
+        dbus
+        expat
+        zlib
+        bzip2
+        xz
+      ];
     };
   };
 
