@@ -11,7 +11,6 @@
     ghc
     gnumake
     go
-    godot
     gradle
     kotlin
     lua

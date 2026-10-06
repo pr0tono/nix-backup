@@ -12,7 +12,7 @@
       };
       preview = {
         wrap = "yes";
-        max_with = 1500;
+        max_width = 1500;
         max_height = 1500;
       };
       tasks = {
