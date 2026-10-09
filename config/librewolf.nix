@@ -13,6 +13,7 @@
           "https://youtube.com"
           "https://twitch.tv"
           "https://proton.me"
+          "https://minecraft.net"
           "https://anidb.app"
           "https://messenger.com"
           "https:/facebook.com"
