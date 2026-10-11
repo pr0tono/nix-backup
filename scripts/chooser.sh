@@ -239,60 +239,6 @@ sound_menu() {
     notify "Sound" "Output changed"
 }
 
-monitor_menu() {
-    local choice
-
-    choice=$(
-        printf '%s\n' \
-            "Extend Right" \
-            "Extend Left" \
-            "Mirror" \
-            "HDMI Only" \
-            "Laptop Only" \
-            "Turn Off" |
-            rofi -dmenu -i -p "Monitor Preset:"
-    )
-
-    case "$choice" in
-        "Extend Right")
-            xrandr \
-                --output HDMI-1 --auto --right-of eDP-1 \
-                --output eDP-1 --primary
-            ;;
-
-        "Extend Left")
-            xrandr \
-                --output HDMI-1 --auto --left-of eDP-1 \
-                --output eDP-1 --primary
-            ;;
-
-        "Mirror")
-            xrandr \
-                --output HDMI-1 --auto --same-as eDP-1 \
-                --output eDP-1 --primary
-            ;;
-
-        "HDMI Only")
-            xrandr \
-                --output eDP-1 --off \
-                --output HDMI-1 --auto --primary
-            ;;
-
-        "Laptop Only")
-            xrandr \
-                --output HDMI-1 --off \
-                --output eDP-1 --auto --primary
-            ;;
-
-        "Turn Off")
-            xrandr --output HDMI-1 --off
-            return
-            ;;
-    esac
-
-    [ -n "$choice" ] && notify "Monitor" "$choice"
-}
-
 main_menu() {
     local choice
 
@@ -301,7 +247,6 @@ main_menu() {
 	    "Watch" \
             "Ollama" \
             "Sound" \
-            "Monitor Preset" \
             "VMs" \
             "WiFi" \
 	    "SSH" \
@@ -336,10 +281,6 @@ main_menu() {
 
         "Sound")
             sound_menu
-            ;;
-
-        "Monitor Preset")
-            monitor_menu
             ;;
 
         "VMs")
