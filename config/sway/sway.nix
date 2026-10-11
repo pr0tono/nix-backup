@@ -57,7 +57,7 @@
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 
         "Mod1+Shift+m" =
-          "exec \"swaynag -t warning -m 'Do you really want to exit the grind?' -B 'Yes, exit ts' 'swaymsg exit'\"";
+          "exec \"swaynag -t warning -m 'Do you really want to exit the grind? The cyber grind?' -B 'Yes, exit ts' 'swaymsg exit'\"";
 
         "Mod1+r" = "mode resize";
 
@@ -121,7 +121,6 @@
       bars = [
         {
           statusCommand = "${pkgs.i3status}/bin/i3status";
-
           fonts = {
             names = [ "Maple Mono NF CN" ];
             size = 8.0;
@@ -208,8 +207,6 @@
     slurp
     udiskie
     wl-clipboard
-    xclip
-    xss-lock
   ];
 }
 

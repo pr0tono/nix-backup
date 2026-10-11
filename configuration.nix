@@ -17,7 +17,7 @@
         theme = pkgs.catppuccin-grub;
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ "8250.nr_uarts=0" ];
     kernel.sysctl."vm.swappiness" = 10;
   };
