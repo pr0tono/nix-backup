@@ -8,7 +8,6 @@
     elixir
     flex
     gcc
-    ghc
     gnumake
     go
     gradle
