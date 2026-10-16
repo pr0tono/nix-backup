@@ -67,6 +67,7 @@
     spotdl
     streamlink
     system-config-printer
+    thunderbird
     tor-browser
     unrar
     unzip
