@@ -21,7 +21,7 @@
 
 | Alias | Command |
 | ----- | ------- |
-| **nsearch** | nh search |
+| **ns** | nh search |
 | **rebuild** | doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |
 | **clear** | clear; fastfetch |
 | **upd** | doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16 |

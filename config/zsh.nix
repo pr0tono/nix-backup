@@ -19,12 +19,8 @@
       upd = "doas nix flake update --flake /etc/nixos/ ; doas nixos-rebuild switch --flake /etc/nixos#vivobook-16";
       weather = "curl wttr.in";
       backup = "sh /etc/nixos/scripts/nixos-backup.sh";
-      nsearch = "nh search";
+      ns = "nh search";
     };
-    initContent = ''
-      fastfetch 
-    '';
-
     sessionVariables = {
       PATH = "$HOME/.local/bin:$PATH";
     };
