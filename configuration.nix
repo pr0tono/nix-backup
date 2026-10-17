@@ -29,9 +29,9 @@
     firewall = {
       enable = true;
       trustedInterfaces = [ "tailscale0" ];
-      allowedTCPPorts = [ 22 80 443 993 465 25565 ];
+      allowedTCPPorts = [ 22 80 443 465 587 993 995 25565 ];
       allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPorts = [ 25565 465 993 ];
+      allowedUDPPorts = [ 25565 ];
       allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
       allowPing = false;
     };

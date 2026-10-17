@@ -16,7 +16,8 @@
           "https://minecraft.net"
           "https://anidb.app"
           "https://messenger.com"
-          "https:/facebook.com"
+          "https://facebook.com"
+          "https:/arena.ai"
         ];
       };
 
