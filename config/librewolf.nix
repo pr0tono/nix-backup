@@ -14,10 +14,10 @@
           "https://twitch.tv"
           "https://proton.me"
           "https://minecraft.net"
-          "https://anidb.app"
           "https://messenger.com"
           "https://facebook.com"
-          "https:/arena.ai"
+          "https://arena.ai"
+          "https://disneyplus.com"
         ];
       };
 
@@ -42,13 +42,11 @@
           "*" = {
             installation_mode = "blocked";
           };
-
           "uBlock0@raymondhill.net" = {
             install_url = moz "ublock-origin";
             installation_mode = "force_installed";
             updates_disabled = true;
           };
-
           "{5b78178f-135d-4df2-821f-1f289be7f348}" = {
             install_url = moz "catppuccin-mocha-rosewater-git";
             installation_mode = "force_installed";
@@ -68,6 +66,10 @@
           };
           "sponsorBlocker@ajay.app" = {
             installation_url = moz "sponosorblock";
+            installation_mode = "force_installed";
+          };
+          "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+            installation_url = moz "proton-pass";
             installation_mode = "force_installed";
           };
         };

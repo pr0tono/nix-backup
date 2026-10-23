@@ -4,7 +4,6 @@
     nixcord.homeModules.nixcord
     ./modules/lang.nix
     ./modules/opsec-shit.nix   
-    ./modules/python.nix
     ./config/main.nix
   ];
     

@@ -103,7 +103,6 @@
         showHiddenChannels.enable = true;
       	showHiddenThings.enable = true;
         silentTyping.enable = true;
-        #summaries.enable = true;
       	spotifyCrack.enable = true;
         voiceChatUtilities.enable = true;
         pauseInvitesForever.enable = true;

@@ -4,6 +4,7 @@
     ./modules/services.nix 
     ./modules/fonts.nix
     ./modules/nix-ld.nix
+    ./modules/python.nix
   ];
 
   boot = {
