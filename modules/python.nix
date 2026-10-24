@@ -1,35 +1,37 @@
 { pkgs, ... }: {
   users.users.protono.packages = with pkgs; [
     (python314.withPackages (ps: with ps; [ 
-      gdown 
-      dnspython
-      urllib3
-      cryptography
-      netaddr
-      pip
+      beautifulsoup4
       cherrypy
       cherrypy-cors
-      requests
-      beautifulsoup4
-      numpy
+      cryptography
+      dnspython
       dnspython
       exifread
-      mako
-      lxml
-      ipwhois
+      gdown 
       ipaddr
+      ipwhois
+      lxml
+      mako
+      netaddr
+      networkx
+      numpy
+      openpyxl
+      pandas
       phonenumbers
-      python-whois
-      secure
+      pillow
+      pip
+      publicsuffixlist
       pyopenssl
       python-docx
       python-pptx
-      networkx
-      publicsuffixlist
-      openpyxl
+      python-whois
       pyyaml
-      pillow
-      pandas
+      requests
+      rich
+      secure
+      urllib3
+      yt-dlp
     ]))
   ];
 }
