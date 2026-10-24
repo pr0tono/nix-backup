@@ -4,19 +4,14 @@
     libraries = with pkgs; [
       acl
       alsa-lib
-      alsa-lib
       attr
       bzip2
-      bzip2
       curl
-      dbus
       dbus
       dbus-glib
       expat
       ffmpeg
       fontconfig
-      fontconfig
-      freetype
       freetype
       glibc
       libevdev

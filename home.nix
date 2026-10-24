@@ -17,7 +17,6 @@
   home.packages = with pkgs; [
     alsa-lib
     android-tools
-    bottles
     calc
     cbonsai
     chroma
