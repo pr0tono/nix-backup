@@ -37,7 +37,6 @@
         copyFileContents.enable = true;
         copyProfileColors.enable = true;
         copyStatusUrls.enable = true;
-        copyStickerLinks.enable = true;
         copyUserMention.enable = true;
         crashHandler.enable = true;
         dearrow.enable = true;
@@ -49,10 +48,10 @@
         equicordHelper.enable = true;
         equicordToolbox.enable = true;
         exportMessages.enable = true;
-        expressionCloner.enable = true;
+        expressionManager.enable = true;
         fakeNitro.enable = true;
         favoriteEmojiFirst.enable = true;
-        favouriteAnything.enable = true;
+        favoriteAnything.enable = true;
         findReply.enable = true;
         fixSpotifyEmbeds.enable = true;
         fixYoutubeEmbeds.enable = true;

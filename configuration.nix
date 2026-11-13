@@ -92,7 +92,7 @@
     };
     steam = {
       enable = true;
-      package = pkgs.millennium-steam;
+      #package = pkgs.millennium-steam;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
