@@ -43,7 +43,7 @@
           format = "Vol %volume";
           format_muted = "Vol muted (%volume)";
           device = "default";
-          mixer = "Master";
+          mixer = "*";
       };
     };
       "tztime local" = {
