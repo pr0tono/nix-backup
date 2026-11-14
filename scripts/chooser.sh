@@ -87,138 +87,103 @@ vms_menu() {
     fi
 }
 
-bluetooth_devices() {
-    local mode="$1"
-    local line data mac name info connected
+notify() {
+    command -v notify-send >/dev/null && notify-send "$1" "$2"
+}
 
-    while IFS= read -r line; do
-        [ -z "$line" ] && continue
+bt_power_on() {
+    bluetoothctl show | grep -q "Powered: yes" && return 0
+    bluetoothctl power on >/dev/null 2>&1
+}
 
-        data=${line#Device }
-        mac=${data%% *}
-        name=${data#"$mac"}
-        name=${name# }
+bt_scan() {
+    local duration="${1:-5}"
+    bluetoothctl --timeout "$duration" scan on >/dev/null 2>&1 &
+    sleep "$duration"
+    wait 2>/dev/null || true
+}
 
+bt_is_connected() {
+    bluetoothctl info "$1" 2>/dev/null | grep -q "Connected: yes"
+}
+
+bt_list_devices() {
+    local filter="$1" mac name
+    bluetoothctl devices | while read -r _ mac name; do
         [ -z "$mac" ] && continue
-        [ -z "$name" ] && name="$mac"
 
-        info=$(bluetoothctl info "$mac" 2>/dev/null)
-
-        if printf '%s\n' "$info" |
-            grep -q '^[[:space:]]*Connected: yes'; then
-            connected=yes
+        if bt_is_connected "$mac"; then
+            [ "$filter" = "connected" ] && printf '%s — %s\n' "$mac" "${name:-$mac}"
         else
-            connected=no
+            [ "$filter" = "disconnected" ] && printf '%s — %s\n' "$mac" "${name:-$mac}"
         fi
+    done
+}
 
-        case "$mode" in
-            connected)
-                [ "$connected" = yes ] &&
-                    printf '%s — %s\n' "$mac" "$name"
-                ;;
+bt_pick_device() {
+    local prompt="$1" devices="$2"
+    [ -z "$devices" ] && { notify "Bluetooth" "No devices found"; return 1; }
+    printf '%s\n' "$devices" | rofi -dmenu -i -p "$prompt" -lines 10
+}
 
-            disconnected)
-                [ "$connected" = no ] &&
-                    printf '%s — %s\n' "$mac" "$name"
-                ;;
-        esac
-    done < <(bluetoothctl devices)
+bt_reconnect() {
+    bt_power_on || { notify "Bluetooth" "Failed to power on"; return; }
+    bt_scan 2
+    notify "Bluetooth" "Reconnect scan complete"
+}
+
+bt_connect() {
+    bt_power_on || { notify "Bluetooth" "Failed to power on"; return; }
+
+    bluetoothctl agent on >/dev/null 2>&1
+    bluetoothctl default-agent >/dev/null 2>&1
+
+    bt_scan 5
+
+    local selected mac name
+    selected=$(bt_pick_device "Connect:" "$(bt_list_devices disconnected)") || return
+    [ -z "$selected" ] && return
+
+    mac=${selected%% *}
+    name=${selected#* — }
+
+    bluetoothctl trust "$mac" >/dev/null 2>&1
+    bluetoothctl pair  "$mac" >/dev/null 2>&1 || true
+
+    if bluetoothctl connect "$mac" >/dev/null 2>&1; then
+        notify "Bluetooth" "Connected to $name"
+    else
+        notify "Bluetooth" "Failed to connect to $name"
+    fi
+}
+
+bt_disconnect() {
+    local selected mac name
+    selected=$(bt_pick_device "Disconnect:" "$(bt_list_devices connected)") || return
+    [ -z "$selected" ] && return
+
+    mac=${selected%% *}
+    name=${selected#* — }
+
+    if bluetoothctl disconnect "$mac" >/dev/null 2>&1; then
+        notify "Bluetooth" "Disconnected from $name"
+    else
+        notify "Bluetooth" "Failed to disconnect from $name"
+    fi
 }
 
 bluetooth_menu() {
-    local choice selected mac device_name
-    local scan_pid devices
-
-    choice=$(
-        printf '%s\n' \
-            "Reconnect Devices" \
-            "Connect Device" \
-            "Disconnect Device" |
-            rofi -dmenu -i -p "Bluetooth:"
-    )
+    local choice
+    choice=$(printf '%s\n' \
+        "Reconnect Devices" \
+        "Connect Device" \
+        "Disconnect Device" |
+        rofi -dmenu -i -p "Bluetooth:") || return
 
     case "$choice" in
-        "Reconnect Devices")
-            bluetoothctl power on >/dev/null 2>&1
-
-            bluetoothctl scan on >/dev/null 2>&1 &
-            scan_pid=$!
-
-            sleep 2 
-
-            bluetoothctl scan off >/dev/null 2>&1
-            kill "$scan_pid" 2>/dev/null || true
-            wait "$scan_pid" 2>/dev/null || true
-            ;;
-
-        "Connect Device")
-            bluetoothctl power on >/dev/null 2>&1 || {
-                notify "Bluetooth" "Could not power on Bluetooth"
-                return
-            }
-
-            bluetoothctl agent on >/dev/null 2>&1
-            bluetoothctl default-agent >/dev/null 2>&1
-
-            bluetoothctl scan on >/dev/null 2>&1 &
-            scan_pid=$!
-
-            sleep 5
-
-            bluetoothctl scan off >/dev/null 2>&1
-            kill "$scan_pid" 2>/dev/null || true
-            wait "$scan_pid" 2>/dev/null || true
-
-            devices=$(bluetooth_devices disconnected)
-
-            if [ -z "$devices" ]; then
-                notify "Bluetooth" "No offline devices found"
-                return
-            fi
-
-            selected=$(
-                printf '%s\n' "$devices" |
-                    rofi -dmenu -i -p "Connect:" -lines 10
-            )
-
-            [ -z "$selected" ] && return
-
-            mac=${selected%% *}
-            device_name=${selected#* — }
-
-            bluetoothctl trust "$mac" >/dev/null 2>&1
-            bluetoothctl pair "$mac" >/dev/null 2>&1 || true
-
-            if bluetoothctl connect "$mac" >/dev/null 2>&1; then
-                notify "Bluetooth" "Connected to $device_name"
-            else
-                notify "Bluetooth" "Failed to connect to $device_name"
-            fi
-            ;;
-
-        "Disconnect Device")
-            devices=$(bluetooth_devices connected)
-
-            if [ -z "$devices" ]; then
-                notify "Bluetooth" "No devices connected"
-                return
-            fi
-
-            selected=$(
-                printf '%s\n' "$devices" |
-                    rofi -dmenu -i -p "Disconnect:" -lines 10
-            )
-
-            [ -z "$selected" ] && return
-
-            mac=${selected%% *}
-
-            if bluetoothctl disconnect "$mac" >/dev/null 2>&1; then
-                notify "Bluetooth" "Disconnected"
-            else
-                notify "Bluetooth" "Failed to disconnect"
-            fi
-            ;;
+        "Reconnect Devices")  bt_reconnect  ;;
+        "Connect Device")     bt_connect    ;;
+        "Disconnect Device")  bt_disconnect ;;
     esac
 }
 

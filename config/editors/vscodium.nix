@@ -12,6 +12,7 @@
     ms-vscode.makefile-tools
     oracle.oracle-java
     prettier.prettier-vscode
+    icsharpcode.ilspy-vscode
     twxs.cmake
     usernamehw.errorlens
     redhat.vscode-xml
