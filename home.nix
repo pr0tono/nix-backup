@@ -62,6 +62,7 @@
     pulseaudio
     pysolfc
     qemu
+    renpy
     spotdl
     streamlink
     system-config-printer
