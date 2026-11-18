@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     alsa-lib
     android-tools
+    blender
     calc
     cbonsai
     chroma
@@ -62,7 +63,6 @@
     pulseaudio
     pysolfc
     qemu
-    renpy
     spotdl
     streamlink
     system-config-printer
