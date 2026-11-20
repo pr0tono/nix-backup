@@ -37,6 +37,11 @@
       };
     };
 
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-vulkan;
+    };
+
     #printers
     printing = {
       enable = true;
@@ -58,7 +63,6 @@
     # random shit ngl
     flatpak.enable = true;
     blueman.enable = true;
-    ollama.enable = true;
     tailscale.enable = true;
     udisks2.enable = true;
     fwupd.enable = true;

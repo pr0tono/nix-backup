@@ -241,7 +241,7 @@ main_menu() {
 	    ;;
 	
         "Ollama")
-            kitty --hold -e ollama run llama3.2
+            kitty --hold -e ollama run qwen3.5
             ;;
 
         "Sound")
