@@ -1,0 +1,34 @@
+{ pkgs, inputs, ... }: {
+  home.packages = with pkgs; [
+    calc
+    chroma
+    cliphist
+    deluge
+    dunst
+    elinks
+    feh
+    ffmpeg
+    fzf
+    gh
+    git
+    irssi
+    jq
+    libnotify
+    meow
+    mpv
+    ncdu
+    nh
+    ollama
+    p7zip 
+    pamixer
+    pavucontrol
+    picom
+    pulseaudio
+    unrar
+    unzip
+    winetricks
+    wineWow64Packages.stable
+    yt-dlp
+    zip
+  ];
+}

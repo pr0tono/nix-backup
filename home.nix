@@ -4,6 +4,7 @@
     nixcord.homeModules.nixcord
     ./modules/lang.nix
     ./modules/opsec-shit.nix   
+    ./modules/apps.nix
     ./config/main.nix
   ];
     
@@ -24,13 +25,10 @@
     cliphist
     ddnet
     deluge
-    doomretro
-    dosbox
     dunst
     elinks
     feh
     ffmpeg
-    fluffychat
     fzf
     gh
     gimp
@@ -39,7 +37,6 @@
     hunspellDicts.en_US
     hunspellDicts.pl_PL
     irssi
-    itch
     jq
     krita
     libnotify
@@ -49,30 +46,21 @@
     mpv
     ncdu
     nh
-    obs-studio
-    obsidian
     ollama
-    onionshare
-    openspades
     p7zip 
     pamixer
     pavucontrol
     picom
     pipes
-    prismlauncher
     pulseaudio
-    pysolfc
     qemu
     spotdl
     streamlink
     system-config-printer
-    thunderbird
     tor-browser
     unrar
     unzip
     virt-viewer
-    waydroid
-    whatsie
     winetricks
     wineWow64Packages.stable
     yt-dlp

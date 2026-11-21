@@ -23,7 +23,6 @@
     perl
     php
     R
-    renpy
     ruby
     ruff
     shellcheck

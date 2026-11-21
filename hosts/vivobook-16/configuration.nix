@@ -1,10 +1,10 @@
-{ pkgs, millennium, ... }: { # i love nixos
+{ pkgs, millennium, inputs, ... }: { # i love nixos
   imports = [
     ./hardware-configuration.nix
-    ./modules/services.nix 
-    ./modules/fonts.nix
-    ./modules/nix-ld.nix
-    ./modules/python.nix
+    "${inputs.self}/modules/services.nix"
+    "${inputs.self}/modules/fonts.nix"
+    "${inputs.self}/modules/nix-ld.nix"
+    "${inputs.self}/modules/python.nix"
   ];
 
   boot = {

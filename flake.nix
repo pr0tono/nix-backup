@@ -46,14 +46,14 @@
         };
 
       modules = [
-        ./configuration.nix
+        ./hosts/vivobook-16/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.extraSpecialArgs = { inherit inputs nixcord millennium spicetify-nix catppuccin-nix; };
-          home-manager.users.protono = ./home.nix;
+          home-manager.users.protono = ./hosts/vivobook-16/home.nix;
         }
       ];
     };
