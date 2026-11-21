@@ -1,10 +1,8 @@
 #!/bin/sh
-
 youtube() {
     local query results display selected number video_id url
     local subtitle_dir subtitle
     local tab
-
     tab=$(printf '\t')
 
     query=$(rofi -dmenu -i -p "YouTube Search:")
@@ -17,6 +15,7 @@ youtube() {
             --no-warnings \
             --skip-download \
             --js-runtimes deno \
+            --extractor-args "youtube:player_client=android,web" \
             --print "%(id)s${tab}%(title)s${tab}%(channel)s" \
             "ytsearch15:$query" 2>/dev/null
     )
@@ -32,13 +31,10 @@ youtube() {
                 {
                     title = $2
                     channel = $3
-
                     if (title == "" || title == "NA" || title == "N/A")
                         title = "Untitled video"
-
                     if (channel == "" || channel == "NA" || channel == "N/A")
                         channel = "Unknown channel"
-
                     printf "%d. %s — %s\n", NR, title, channel
                 }
             '
@@ -48,7 +44,6 @@ youtube() {
         printf '%s\n' "$display" |
             rofi -dmenu -i -p "YouTube Results:" -lines 15
     )
-
     [ -z "$selected" ] && return
 
     number=$(
@@ -61,12 +56,10 @@ youtube() {
             sed -n "${number}p" |
             cut -f1
     )
-
     [ -z "$video_id" ] && return
 
     url="https://www.youtube.com/watch?v=$video_id"
     subtitle_dir="${XDG_CACHE_HOME:-$HOME/.cache}/chooser-subs"
-
     mkdir -p "$subtitle_dir"
     rm -f "$subtitle_dir/$video_id".*.vtt
 
@@ -77,6 +70,7 @@ youtube() {
         --write-auto-subs \
         --sub-langs "en.*" \
         --sub-format vtt \
+        --extractor-args "youtube:player_client=android,web" \
         -o "$subtitle_dir/%(id)s.%(ext)s" \
         "$url" >/dev/null 2>&1
 
@@ -88,10 +82,13 @@ youtube() {
             -print -quit
     )
 
+    # Common mpv flags to force Android client extraction & prevent 403 Forbidden
+    YTDL_OPTS='--ytdl-raw-options=extractor-args="youtube:player_client=android,web"'
+
     if [ -n "$subtitle" ]; then
-        mpv --sub-file="$subtitle" "$url" --volume=50
+        mpv "$YTDL_OPTS" --sub-file="$subtitle" "$url" --volume=50
     else
-        mpv "$url" --volume=50
+        mpv "$YTDL_OPTS" "$url" --volume=50
     fi
 }
 
