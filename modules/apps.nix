@@ -1,18 +1,16 @@
 { pkgs, inputs, ... }: {
   home.packages = with pkgs; [
-    blender
-    doomretro
     android-tools
-    system-config-printer
+    blender
+    ddnet
+    doomretro
+    dosbox
+    fluffychat
+    gimp
+    itch
     krita
     libreoffice
     localsend
-    gimp
-    dosbox
-    ddnet
-    tor-browser
-    fluffychat
-    itch
     obs-studio
     obsidian
     onionshare
@@ -20,7 +18,9 @@
     prismlauncher
     pysolfc
     renpy
+    system-config-printer
     thunderbird
+    tor-browser
     waydroid
     whatsie
   ];
